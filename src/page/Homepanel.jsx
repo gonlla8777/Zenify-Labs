@@ -26,10 +26,12 @@ const Homepanel = () => {
               <h2>EMBUDOS ACTIVOS</h2>
             </div>
           </Link>
-          <div className="text-slate-200 text-xl w-80 h-48 bg-green-600 rounded-2xl pt-5 hover:scale-110 transition-all">
-            <FaListUl className="w-9/12 h-4/6 m-auto " />
-            <h2>LISTAS DE DATOS</h2>
-          </div>{" "}
+          <Link to={"/datalist"}>
+            <div className="text-slate-200 text-xl w-80 h-48 bg-green-600 rounded-2xl pt-5 hover:scale-110 transition-all">
+              <FaListUl className="w-9/12 h-4/6 m-auto " />
+              <h2>LISTAS DE DATOS</h2>
+            </div>{" "}
+          </Link>
           <div className="text-slate-200 text-xl w-80 h-48 bg-green-600 rounded-2xl pt-5 hover:scale-110 transition-all">
             <RiMailSendLine className="w-9/12 h-4/6 m-auto " />
             <h2>ENVIAR CORREO</h2>
