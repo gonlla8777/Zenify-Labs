@@ -104,7 +104,7 @@ const Embudo = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center ">
+    <div className="flex flex-col items-center justify-center h-full w-full">
       <div className="text-slate-200 py-4">
         <p className="text-4xl font-light underline underline-offset-8 decoration-0 p-6">
           Embudos Activos!
@@ -232,7 +232,7 @@ const Embudo = () => {
           ))}
         </div>
         <div className="flex justify-center items-center pt-16">
-          <div className="grid text-8xl text-slate-50 justify-items-center items-center justify-center text-center rounded-3xl bg-neutral-700 w-1/4 p-2">
+          <div className="grid text-6xl text-slate-50 justify-items-center items-center justify-center text-center rounded-3xl bg-neutral-700 w-1/4 p-2">
             <IoAddCircleOutline />
             <p className="text-xl">SOLICITAR EMBUDO</p>
           </div>
