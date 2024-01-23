@@ -8,14 +8,20 @@ const DataList = () => {
       fuente: "fuenteA",
       extension: "extA",
       datos: "datoA",
-      acciones: "accionA",
+      acciones: {
+        download: false,
+        senMail: true,
+      },
     },
     {
       lista: "B",
       fuente: "fuenteB",
       extension: "extB",
       datos: "datoB",
-      acciones: "accionB",
+      acciones: {
+        download: true,
+        senMail: true,
+      },
     },
     // ... más datos
   ];
