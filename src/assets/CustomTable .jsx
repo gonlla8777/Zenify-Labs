@@ -4,58 +4,72 @@ import { IoOpenOutline } from "react-icons/io5";
 import { IoPeopleSharp } from "react-icons/io5";
 import { CiShoppingTag } from "react-icons/ci";
 import { LuSettings2 } from "react-icons/lu";
+import { FaDownload } from "react-icons/fa";
+import { RiMailSendLine } from "react-icons/ri";
 const CustomTable = ({ data }) => {
   const columns = useMemo(
     () => [
       {
         Header: () => (
-          <div className="flex">
-            <IoOpenOutline className="w-9/12 h-4/6 m-auto pr-2" />
-            {" LISTA"}
+          <div className="flex text-slate-200  ">
+            <IoOpenOutline className="w-9/12 h-4/6 m-auto pr-2 " />
+            <p className="font-medium"> Listas</p>
           </div>
         ),
         accessor: "lista",
-        headerClass: "bg-blue-300",
-        className: "bg-blue-200",
+        headerClass: "bg-neutral-700",
+        className: "bg-neutral-600 text-slate-200",
         Cell: ({ row }) => (
           <>
             <div>{row.original.lista}</div>
-            <div>{row.original.fuente}</div>
+            <div className=" text-neutral-500/90">{row.original.fuente}</div>
           </>
         ),
       },
       {
         Header: () => (
-          <div className="flex">
-            <IoPeopleSharp className="w-9/12 h-4/6 m-auto pr-2" />
-            {" EXTENSIÓN"}
+          <div className="flex text-slate-200">
+            <IoPeopleSharp className="w-9/12 h-4/6 m-auto pr-2 " />
+            <p className="font-medium"> EXTENSIÓN</p>
           </div>
         ),
         accessor: "extension",
-        headerClass: "bg-green-300",
-        className: "bg-green-200",
+        headerClass: "bg-neutral-500/30",
+        className: "bg-neutral-500 text-slate-200",
       },
       {
         Header: () => (
-          <div className="flex">
+          <div className="flex text-slate-200">
             <CiShoppingTag className="w-9/12 h-4/6 m-auto pr-2" />
-            {" DATOS"}
+            <p className="font-medium"> DATOS</p>
           </div>
         ),
         accessor: "datos",
-        headerClass: "bg-yellow-300",
-        className: "bg-yellow-200",
+        headerClass: "bg-neutral-700",
+        className: "bg-neutral-600 text-slate-200",
       },
       {
         Header: () => (
-          <div className="flex">
+          <div className="flex text-slate-200">
             <LuSettings2 className="w-9/12 h-4/6 m-auto pr-2" />
-            {" ACCIONES"}
+            <p className="font-medium"> ACCIONES</p>
           </div>
         ),
         accessor: "acciones",
-        headerClass: "bg-red-300",
-        className: "bg-red-200",
+        headerClass: "bg-neutral-700/30",
+        className: "bg-neutral-700 text-slate-200 ",
+        Cell: ({ row }) => (
+          <>
+            <div className="flex">
+              <div className=" text-neutral-100">
+                <FaDownload />
+              </div>
+              <div className=" text-neutral-500/90">
+                <RiMailSendLine />
+              </div>
+            </div>
+          </>
+        ),
       },
     ],
     []
@@ -103,7 +117,7 @@ const CustomTable = ({ data }) => {
             </tr>
           ))}
         </thead>
-        <tbody {...getTableBodyProps()}>
+        <tbody {...getTableBodyProps()} className="divide-y">
           {rows.map((row) => {
             prepareRow(row);
             return (
@@ -111,7 +125,7 @@ const CustomTable = ({ data }) => {
                 {row.cells.map((cell) => (
                   <td
                     {...cell.getCellProps()}
-                    className={`p-2 ${cell.column.className}`}
+                    className={`p-2 ${cell.column.className} `}
                   >
                     {cell.render("Cell")}
                   </td>
