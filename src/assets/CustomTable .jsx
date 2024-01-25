@@ -12,7 +12,7 @@ const CustomTable = ({ data }) => {
       {
         Header: () => (
           <div className="flex text-slate-200  ">
-            <IoOpenOutline className="w-9/12 h-4/6 m-auto pr-2 " />
+            <IoOpenOutline className="w-fit h-4/6 m-auto pr-2 " />
             <p className="font-medium"> Listas</p>
           </div>
         ),
@@ -29,7 +29,7 @@ const CustomTable = ({ data }) => {
       {
         Header: () => (
           <div className="flex text-slate-200">
-            <IoPeopleSharp className="w-9/12 h-4/6 m-auto pr-2 " />
+            <IoPeopleSharp className="w-fit h-4/6 m-auto pr-2 " />
             <p className="font-medium"> EXTENSIÓN</p>
           </div>
         ),
@@ -40,7 +40,7 @@ const CustomTable = ({ data }) => {
       {
         Header: () => (
           <div className="flex text-slate-200">
-            <CiShoppingTag className="w-9/12 h-4/6 m-auto pr-2" />
+            <CiShoppingTag className="w-fit h-4/6 m-2" />
             <p className="font-medium"> DATOS</p>
           </div>
         ),
@@ -51,7 +51,7 @@ const CustomTable = ({ data }) => {
       {
         Header: () => (
           <div className="flex text-slate-200">
-            <LuSettings2 className="w-9/12 h-4/6 m-auto pr-2" />
+            <LuSettings2 className="w-fit h-4/6 m-auto pr-2" />
             <p className="font-medium"> ACCIONES</p>
           </div>
         ),
@@ -61,10 +61,22 @@ const CustomTable = ({ data }) => {
         Cell: ({ row }) => (
           <>
             <div className="flex">
-              <div className=" text-neutral-100">
+              <div
+                className={`${
+                  row.original.acciones.download
+                    ? "text-neutral-100 text-2xl px-2 "
+                    : "text-neutral-500/90 text-2xl px-2"
+                }`}
+              >
                 <FaDownload />
               </div>
-              <div className=" text-neutral-500/90">
+              <div
+                className={`${
+                  row.original.acciones.download
+                    ? "text-neutral-100 text-2xl px-2 "
+                    : "text-neutral-500/90 text-2xl px-2"
+                }`}
+              >
                 <RiMailSendLine />
               </div>
             </div>
