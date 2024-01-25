@@ -5,7 +5,7 @@ import "./index.css";
 function App() {
   return (
     <>
-      <div className="bg-neutral-800 w-full h-auto min-h-screen">
+      <div className="bg-neutral-800 w-auto  h-auto min-h-screen min-w-screen">
         <Navbar />
         <div className="justify-items-center text-center mx-auto">
           <AppRouter />

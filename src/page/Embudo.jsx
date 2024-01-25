@@ -226,7 +226,7 @@ const Embudo = () => {
                 setCurrentIndex(index);
               }}
               className={`h-5 w-5 mx-2 bg-neutral-600 rounded-full cursor-pointer ${
-                index === currentIndex ? "bg-neutral-100" : ""
+                index === currentIndex ? "bg-neutral-200" : ""
               }`}
             ></span>
           ))}
