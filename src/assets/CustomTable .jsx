@@ -126,10 +126,16 @@ const CustomTable = ({ data }) => {
                   {...column.getHeaderProps(column.getSortByToggleProps())}
                   className={` lg:text-xl p-2 text-sm  ${column.headerClass}  `}
                 >
-                  {column.render("Header")}
-                  <span>
-                    {column.isSorted ? (column.isSortedDesc ? " ↓" : " ↑") : ""}
-                  </span>
+                  <div className="flex justify-center">
+                    {column.render("Header")}
+                    <span className="ml-2 text-white">
+                      {column.isSorted
+                        ? column.isSortedDesc
+                          ? " ↓"
+                          : " ↑"
+                        : ""}
+                    </span>
+                  </div>
                 </th>
               ))}
             </tr>
