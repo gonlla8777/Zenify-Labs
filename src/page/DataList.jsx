@@ -4,9 +4,9 @@ import CustomTable from "../assets/CustomTable ";
 const DataList = () => {
   const data = [
     {
-      lista: "A",
-      fuente: "fuenteA",
-      extension: "extA",
+      lista: "Ninja Expert Leads cualificados",
+      fuente: "Emergente Inicio Form, www.juangutierez.com",
+      extension: "11.825",
       datos: "datoA",
       acciones: {
         download: false,
@@ -26,7 +26,7 @@ const DataList = () => {
     // ... más datos
   ];
   return (
-    <div className="flex flex-col items-center justify-center ">
+    <div className="flex flex-col items-center justify-center  ">
       <div className="text-slate-200 py-4">
         <p className="text-4xl font-light underline underline-offset-8 decoration-0 p-6">
           Lista de Datos

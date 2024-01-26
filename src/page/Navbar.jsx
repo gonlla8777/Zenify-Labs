@@ -6,7 +6,7 @@ const Navbar = () => {
   return (
     <>
       <div>
-        <div className="bg-gradient-to-t from-neutral-800  to-neutral-950  w-screen flex items-end pt-2 text-white">
+        <div className="bg-gradient-to-t from-neutral-800  to-neutral-950  w-auto flex items-end pt-2 text-white">
           <Link to={"/"} className="flex">
             <img src={Logo} className="w-20" />
             <div className="flex text-3xl pl-2 pb-2">
