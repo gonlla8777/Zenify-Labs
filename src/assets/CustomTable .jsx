@@ -23,7 +23,7 @@ const CustomTable = ({ data }) => {
         Cell: ({ row }) => (
           <>
             <div>{row.original.lista}</div>
-            <div className=" text-neutral-500/90 text-left truncate">
+            <div className=" text-neutral-500/90 text-left trun">
               Fuente: {row.original.fuente}
             </div>
           </>
