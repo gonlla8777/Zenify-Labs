@@ -14,9 +14,9 @@ const DataList = () => {
       },
     },
     {
-      lista: "B",
-      fuente: "fuenteB",
-      extension: "extB",
+      lista: "Ninjalab | Content ExpertB",
+      fuente: "Landing Form, ninjalab.net",
+      extension: "252.485",
       datos: "datoB",
       acciones: {
         download: true,
