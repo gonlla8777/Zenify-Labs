@@ -1,5 +1,6 @@
 import React, { useMemo } from "react";
 import { useTable, useSortBy, useGlobalFilter } from "react-table";
+import { IoSearch } from "react-icons/io5";
 import { IoOpenOutline } from "react-icons/io5";
 import { IoPeopleSharp } from "react-icons/io5";
 import { CiShoppingTag } from "react-icons/ci";
@@ -11,25 +12,27 @@ const CustomTable = ({ data }) => {
     () => [
       {
         Header: () => (
-          <div className="flex text-slate-200  ">
-            <IoOpenOutline className="w-fit h-4/6 m-auto pr-2 " />
-            <p className="font-medium"> Listas</p>
+          <div className="flex text-slate-200 justify-center ">
+            <IoOpenOutline className="w-fit h-4/6 mr-2" />
+            <p className=" font-medium "> Listas</p>
           </div>
         ),
         accessor: "lista",
         headerClass: "bg-neutral-700",
-        className: "bg-neutral-600 text-slate-200",
+        className: "bg-neutral-600 text-slate-200 text-left",
         Cell: ({ row }) => (
           <>
             <div>{row.original.lista}</div>
-            <div className=" text-neutral-500/90">{row.original.fuente}</div>
+            <div className=" text-neutral-500/90 text-left">
+              {row.original.fuente}
+            </div>
           </>
         ),
       },
       {
         Header: () => (
-          <div className="flex text-slate-200">
-            <IoPeopleSharp className="w-fit h-4/6 m-auto pr-2 " />
+          <div className="flex text-slate-200  justify-center">
+            <IoPeopleSharp className="w-fit h-4/6 mr-2 " />
             <p className="font-medium"> EXTENSIÓN</p>
           </div>
         ),
@@ -39,9 +42,9 @@ const CustomTable = ({ data }) => {
       },
       {
         Header: () => (
-          <div className="flex text-slate-200">
-            <CiShoppingTag className="w-fit h-4/6 m-2" />
-            <p className="font-medium"> DATOS</p>
+          <div className="flex text-slate-200  justify-center">
+            <CiShoppingTag className="w-fit h-4/6 pt-1" />
+            <p className="font-medium pl-2"> DATOS</p>
           </div>
         ),
         accessor: "datos",
@@ -50,7 +53,7 @@ const CustomTable = ({ data }) => {
       },
       {
         Header: () => (
-          <div className="flex text-slate-200">
+          <div className="flex text-slate-200  justify-center">
             <LuSettings2 className="w-fit h-4/6 m-auto pr-2" />
             <p className="font-medium"> ACCIONES</p>
           </div>
@@ -100,17 +103,20 @@ const CustomTable = ({ data }) => {
   const { globalFilter } = state;
 
   return (
-    <div>
-      <input
-        type="text"
-        placeholder="Buscar..."
-        value={globalFilter || ""}
-        onChange={(e) => setGlobalFilter(e.target.value)}
-        className="mb-4 p-2 "
-      />
+    <div className="w-fit">
+      <div className="flex items-center">
+        <input
+          type="text"
+          placeholder="Buscar..."
+          value={globalFilter || ""}
+          onChange={(e) => setGlobalFilter(e.target.value)}
+          className="grid left-0 mb-4 p-2 h-7  bg-neutral-700/30 text-neutral-500/90"
+        />
+        <IoSearch className="text-2xl mb-4 ml-1 text-white " />
+      </div>
       <table
         {...getTableProps()}
-        className="table-auto w-full h-auto rounded-lg  overflow-hidden"
+        className="table-auto w-full h-auto rounded-2xl  overflow-hidden "
       >
         <thead>
           {headerGroups.map((headerGroup) => (
@@ -118,7 +124,7 @@ const CustomTable = ({ data }) => {
               {headerGroup.headers.map((column) => (
                 <th
                   {...column.getHeaderProps(column.getSortByToggleProps())}
-                  className={`text-xl p-2  ${column.headerClass}  `}
+                  className={` lg:text-xl p-2 text-sm  ${column.headerClass}  `}
                 >
                   {column.render("Header")}
                   <span>
@@ -129,7 +135,7 @@ const CustomTable = ({ data }) => {
             </tr>
           ))}
         </thead>
-        <tbody {...getTableBodyProps()} className="divide-y">
+        <tbody {...getTableBodyProps()} className="divide-y ">
           {rows.map((row) => {
             prepareRow(row);
             return (
