@@ -38,10 +38,12 @@ const Homepanel = () => {
               <h2>ENVIAR CORREO</h2>
             </div>{" "}
           </Link>
-          <div className="text-slate-200 text-xl w-80 h-48 bg-green-600 rounded-2xl pt-5 hover:scale-110 transition-all">
-            <FaMagic className="w-9/12 h-4/6 m-auto " />
-            <h2>AUTOMATIZACIONES</h2>
-          </div>{" "}
+          <Link to={"/automation"}>
+            <div className="text-slate-200 text-xl w-80 h-48 bg-green-600 rounded-2xl pt-5 hover:scale-110 transition-all">
+              <FaMagic className="w-9/12 h-4/6 m-auto " />
+              <h2>AUTOMATIZACIONES</h2>
+            </div>{" "}
+          </Link>
           <div className="text-slate-200 text-xl w-80 h-48 bg-green-600 rounded-2xl pt-5 hover:scale-110 transition-all">
             <FiSend className="w-9/12 h-4/6 m-auto " />
             <h2>BANDEJA DE SALIDA</h2>
