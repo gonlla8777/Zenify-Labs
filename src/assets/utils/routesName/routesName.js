@@ -3,4 +3,5 @@ export const routesName = {
   embudo: "/embudo",
   datalist: "/datalist",
   sendMails: "/sendMails",
+  automation: "/automation",
 };
