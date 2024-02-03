@@ -225,7 +225,7 @@ const SendMails = () => {
               GUARDAR PLANTILLA
             </button>
             <button
-              className="w-auto h-auto mt-20 p-2 bg-green-600 text-white flex text-xl font-normal"
+              className="w-auto h-auto mt-20 p-2 bg-[#484848] text-white flex text-xl font-normal"
               onClick={handleSubmit}
             >
               <RiMailSendLine className="text-3xl " />
