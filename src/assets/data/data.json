@@ -1,0 +1,26 @@
+{
+  "spanish": {
+    "home": {
+      "title": "Bienvenido",
+      "controlPanel": "Panel de Control",
+      "activeFunnels": "Embudos Activos",
+      "dataList": "Lista de Datos",
+      "sendEmails": "Enviar Correos",
+      "automations": "Automatizaciones",
+      "outbox": "Bandeja de Salida",
+      "emailTemplates": "Plantillas de correo"
+    }
+  },
+  "english": {
+    "home": {
+      "title": "Welcome",
+      "controlPanel": "Control Panel",
+      "activeFunnels": "Active Funnels",
+      "dataList": "Data List",
+      "sendEmails": "Send e-mails",
+      "automations": "Automations",
+      "outbox": "Outbox",
+      "emailTemplates": "Email templates"
+    }
+  }
+}

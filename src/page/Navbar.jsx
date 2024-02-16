@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Logo from "/image/Logo.svg";
-import { IoSettings } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import DropdownMenu from "../assets/menu/dropdownMenu";
 const Navbar = () => {
   return (
     <>
@@ -17,7 +17,7 @@ const Navbar = () => {
           </Link>
         </div>
 
-        <IoSettings className="absolute right-10 top-5 text-white text-4xl" />
+        <DropdownMenu />
       </div>
     </>
   );
