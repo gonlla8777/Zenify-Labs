@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import { IoToggle } from "react-icons/io5";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { IoAddCircleOutline } from "react-icons/io5";
+import Switch from "@mui/material/Switch";
 
 const Automation = () => {
   const [showModal, setShowModal] = useState(false);
   const [automatizacion, setAutomatizacion] = useState("");
   const [objeto, setObjeto] = useState("");
   const [plantilla, setPlantilla] = useState("");
-  const [tipoAutomatizacion, setTipoAutomatizacion] = useState("entrada"); // Nuevo estado
+  const [tipoAutomatizacion, setTipoAutomatizacion] = useState("entrada");
   const [automatizaciones, setAutomatizaciones] = useState([
     {
       automatizacion: "entrada",
@@ -43,6 +44,18 @@ const Automation = () => {
     setShowModal(false);
   };
 
+  const handleDeleteAutomatizacion = (index) => {
+    const confirmation = window.confirm(
+      "¿Estás seguro de que quieres eliminar esta automatización?"
+    );
+    if (confirmation) {
+      const updatedAutomatizaciones = automatizaciones.filter(
+        (item, i) => i !== index
+      );
+      setAutomatizaciones(updatedAutomatizaciones);
+    }
+  };
+
   return (
     <div className="flex flex-col items-center justify-center">
       <div className="text-slate-200 py-4">
@@ -50,25 +63,26 @@ const Automation = () => {
           Automatizaciones
         </p>
       </div>
-      <div className="grid text-white border border-white rounded-b-2xl justify-center items-center ">
+      <div className="grid text-white border border-white rounded-b-2xl justify-center items-center lg:text-xl font-light ">
         {automatizaciones.map((item, index) => (
           <div
             key={index}
-            className={`flex items-center ${
+            className={`flex items-center px-5 ${
               index % 2 === 0 ? "bg-neutral-700/20" : "bg-neutral-600/70"
-            } px-1 ${
-              index === automatizaciones.length - 1 ? "rounded-b-2xl" : ""
-            }`}
+            }  ${index === automatizaciones.length - 1 ? "rounded-b-2xl" : ""}`}
           >
             <p>
               Cuando <span>{item.automatizacion}</span> :{" "}
             </p>
             <p>{item.objeto} ,</p>
             <p>enviar plantilla : </p>
-            <p className="md:pr-20">{item.plantilla}</p>
+            <p className="md:pr-24 lg:pr-80 pr-5">{item.plantilla}</p>
             <div className="ml-auto flex items-center space-x-5 px-10">
-              <IoToggle className="text-green-500 text-5xl px-2" />
-              <FaRegTrashAlt className="text-white text-2xl" />
+              <Switch defaultChecked color="success" className="mx-2" />
+              <FaRegTrashAlt
+                className="text-white text-2xl cursor-pointer hover:scale-110 hover:transition-all"
+                onClick={() => handleDeleteAutomatizacion(index)}
+              />
             </div>
           </div>
         ))}
@@ -83,48 +97,88 @@ const Automation = () => {
         </div>
       </div>
 
-      {/* Modal */}
       {showModal && (
         <div className="fixed inset-0 bg-black bg-opacity-70 z-50 flex justify-center items-center">
-          <div className="bg-neutral-800 p-8 rounded-lg border border-white text-white">
-            <h2 className="text-2xl font-bold mb-4">Crear Automatización</h2>
-            <label htmlFor="tipoAutomatizacion">Tipo de Automatización:</label>
-            <select
-              id="tipoAutomatizacion"
-              value={tipoAutomatizacion}
-              onChange={(e) => setTipoAutomatizacion(e.target.value)}
-              className="mb-4 p-2 border border-gray-300 rounded"
-            >
-              <option value="entrada">Entrada</option>
-              <option value="dia">Día</option>
-              <option value="fecha">Fecha</option>
-              <option value="venta">Venta</option>
-            </select>
-            <label htmlFor="objeto">Objeto:</label>
-            <input
-              type="text"
-              id="objeto"
-              value={objeto}
-              onChange={(e) => setObjeto(e.target.value)}
-              className="mb-4 p-2 border border-gray-300 rounded"
-            />
-            <label htmlFor="plantilla">Plantilla:</label>
-            <input
-              type="text"
-              id="plantilla"
-              value={plantilla}
-              onChange={(e) => setPlantilla(e.target.value)}
-              className="mb-4 p-2 border border-gray-300 rounded"
-            />
-            <button
-              onClick={handleCreateAutomatizacion}
-              className="bg-blue-500 text-white p-2 rounded"
-            >
+          <div className="bg-neutral-800 p-8 rounded-lg border border-[#2D2D2D] text-white w-2/4 grid justify-items-center">
+            <h2 className="text-2xl  mb-10 uppercase font-light">
               Crear Automatización
-            </button>
-            <button onClick={() => setShowModal(false)} className="ml-2">
-              Cancelar
-            </button>
+            </h2>
+            <div className="grid grid-cols-1 justify-items-start ">
+              <div className="flex">
+                <div>
+                  <label htmlFor="tipoAutomatizacion">Cuando :</label>
+                  <select
+                    id="tipoAutomatizacion"
+                    value={tipoAutomatizacion}
+                    onChange={(e) => setTipoAutomatizacion(e.target.value)}
+                    className="mb-4 p-2 mx-5 rounded bg-[#424242] "
+                  >
+                    <option value="entrada">Entrada</option>
+                    <option value="dia">Día</option>
+                    <option value="fecha">Fecha</option>
+                    <option value="venta">Venta</option>
+                  </select>
+                </div>
+                <div className="">
+                  <label htmlFor="objeto" className="m-auto">
+                    Enviar Plantilla:
+                  </label>
+                  <select
+                    type="text"
+                    id="objeto"
+                    value={objeto}
+                    onChange={(e) => setObjeto(e.target.value)}
+                    className="mb-4 p-2 mx-5  rounded bg-[#424242]"
+                  >
+                    <option value="Ninja Expert cualificados 1">
+                      Ninja Expert cualificados 1
+                    </option>
+                    <option value="Ninja Expert cualificados 2">
+                      Ninja Expert cualificados 2
+                    </option>
+                    <option value="Ninja Expert cualificados 3">
+                      Ninja Expert cualificados 3
+                    </option>
+                    <option value="Ninja Expert cualificados 4">
+                      Ninja Expert cualificados 4
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div></div>
+              <div>
+                <label htmlFor="plantilla" className="">
+                  Plantilla:
+                </label>
+                <select
+                  type="text"
+                  id="plantilla"
+                  value={plantilla}
+                  onChange={(e) => setPlantilla(e.target.value)}
+                  className="mb-4 p-2 mx-5  rounded bg-[#424242]"
+                >
+                  <option value="Plantailla 1">Plantilla 1</option>
+                  <option value="Plantilla 2">Plantailla 2</option>
+                  <option value="Plantilla 3">Plantilla 3</option>
+                  <option value="Plantilla 4">Plantilla 4</option>
+                </select>
+              </div>
+            </div>
+
+            <div className="mt-10">
+              <button
+                onClick={() => setShowModal(false)}
+                className="bg-[#818181] text-white p-2 m-2 mx-10 uppercase"
+              >
+                Cancelar
+              </button>
+              <button
+                onClick={handleCreateAutomatizacion}
+                className="bg-[#469C4A] text-white p-2 m-2 uppercase"
+              >
+                Aceptar
+              </button>
+            </div>
           </div>
         </div>
       )}
