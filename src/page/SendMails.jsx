@@ -192,7 +192,7 @@ const SendMails = () => {
           <ReactQuill
             value={content}
             onChange={handleContentChange}
-            className="h-fit"
+            className="h-fit text-white"
             modules={{
               toolbar: [
                 ["bold", "italic", "underline", "strike"],
