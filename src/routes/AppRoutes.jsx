@@ -5,10 +5,12 @@ import Embudo from "../page/Embudo.jsx";
 import DataList from "../page/DataList.jsx";
 import SendMails from "../page/SendMails.jsx";
 import Automation from "../page/Automation.jsx";
+import Login from "../page/Login.jsx";
 
 const AppRouter = () => {
   return (
     <Routes>
+      <Route path={routesName.login} element={<Login />} />
       <Route path={routesName.homepanel} element={<Homepanel />} />
       <Route path={routesName.embudo} element={<Embudo />} />
       <Route path={routesName.datalist} element={<DataList />} />

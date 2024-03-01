@@ -11,8 +11,7 @@ import { useLanguage } from "../assets/languageService/LanguageContext";
 const Homepanel = () => {
   const name = "Juan";
   const { language } = useLanguage();
-  console.log(language);
-  console.log(data[language].home.title);
+
   return (
     <>
       <div className="">
@@ -20,7 +19,9 @@ const Homepanel = () => {
           <p className="text-4xl font-light underline underline-offset-8 decoration-0 uppercase ">
             {data[language].home.title}, {name}!
           </p>
-          <p className="text-2xl font-light py-2">PANEL DE CONTROL</p>
+          <p className="text-2xl font-light py-2">
+            {data[language].home.controlPanel}
+          </p>
         </div>
 
         <div className="    grid  lg:grid-cols-3 text-center   justify-items-center mx-auto gap-8 w-fit h-fit">

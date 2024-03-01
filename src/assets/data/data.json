@@ -1,5 +1,13 @@
 {
   "spanish": {
+    "login": {
+      "motivationalText": "Estadísticas e información precisa son la clave del ",
+      "motivationalTextGreen": "éxito",
+      "login": "Iniciar Sesión",
+      "emailOrUsername": "Email o Nombre de usuario:",
+      "password": "Contraseña:",
+      "forgotPassword": "Olvidé la contraseña"
+    },
     "home": {
       "title": "Bienvenido",
       "controlPanel": "Panel de Control",
@@ -9,9 +17,38 @@
       "automations": "Automatizaciones",
       "outbox": "Bandeja de Salida",
       "emailTemplates": "Plantillas de correo"
+    },
+    "funnel": {
+      "title": "Embudos Activos",
+      "requestFunnels": "Solicitar Embudos",
+      "periods": "Periodos",
+      "to": "al",
+      "audienceReached": "Público Alcanzado",
+      "growth": "Crecimiento",
+      "listEntries": "Entradas a las listas",
+      "ofTraffic": "del tráfico",
+      "salesMade": "Ventas Realizadas",
+      "accept": "Aceptar",
+      "funnelMail": "zenifylabs@gmail.com"
+    },
+    "dataList": {
+      "title": "Lista de Datos",
+      "list": "Listas",
+      "source": "Fuente",
+      "extension": "Extensión",
+      "data": "Datos",
+      "actions": "Acciones"
     }
   },
   "english": {
+    "login": {
+      "motivationalText": "Statistics and accurate information are the key to ",
+      "motivationalTextGreen": "success",
+      "login": "Log In",
+      "emailOrUsername": "Email or Username:",
+      "password": "Password:",
+      "forgotPassword": "Forgot Password"
+    },
     "home": {
       "title": "Welcome",
       "controlPanel": "Control Panel",
@@ -21,6 +58,121 @@
       "automations": "Automations",
       "outbox": "Outbox",
       "emailTemplates": "Email templates"
+    },
+    "funnel": {
+      "title": "Active Funnels",
+      "requestFunnels": "Funnel Request",
+      "periods": "Periods",
+      "to": "to",
+      "audienceReached": "Audience Reached",
+      "growth": "Growth",
+      "listEntries": "List Entries",
+      "ofTraffic": "of Traffic",
+      "salesMade": "Sales Made",
+      "accept": "Accept",
+      "funnelMail": "zenifylabs@gmail.com"
+    },
+    "dataList": {
+      "title": "Data List",
+      "list": "Lists",
+      "source": "Source",
+      "extension": "Extension",
+      "data": "Data",
+      "actions": "Actions"
     }
-  }
+  },
+  "embudoData": [
+    {
+      "title": "Bootcamp: Convertí tu agencia en Growth Partner 1",
+      "description": "www.dcgacademy.co de la imagen 1",
+      "src": "https://res.cloudinary.com/di5mf85h3/image/upload/v1709277718/bootcam_j9wq6w.png",
+      "firstPeriod": "01/01/2023",
+      "secodPeriod": "01/02/2023",
+      "audienceReached": "122.352",
+      "growth": "5",
+      "listEntriesData": "3.500",
+      "trafficPercentage": "2.86",
+      "salesMade": "400",
+      "salesPercentage": "0.32"
+    },
+    {
+      "title": "Bootcamp: Convertí tu agencia en Growth Partner 2",
+      "description": "www.dcgacademy.co de la imagen 2",
+      "src": "https://res.cloudinary.com/di5mf85h3/image/upload/v1709277718/bootcam_j9wq6w.png",
+      "firstPeriod": "01/01/2023",
+      "secodPeriod": "01/02/2023",
+      "audienceReached": "122.352",
+      "growth": "5",
+      "listEntriesData": "3.500",
+      "trafficPercentage": "2.86",
+      "salesMade": "400",
+      "salesPercentage": "0.32"
+    },
+    {
+      "title": "Bootcamp: Convertí tu agencia en Growth Partner 3",
+      "description": "www.dcgacademy.co de la imagen 3",
+      "src": "https://res.cloudinary.com/di5mf85h3/image/upload/v1709277718/bootcam_j9wq6w.png",
+      "firstPeriod": "01/01/2023",
+      "secodPeriod": "01/02/2023",
+      "audienceReached": "122.352",
+      "growth": "5",
+      "listEntriesData": "3.500",
+      "trafficPercentage": "2.86",
+      "salesMade": "400",
+      "salesPercentage": "0.32"
+    },
+    {
+      "title": "Bootcamp: Convertí tu agencia en Growth Partner 4",
+      "description": "www.dcgacademy.co de la imagen 4",
+      "src": "https://res.cloudinary.com/di5mf85h3/image/upload/v1709277718/bootcam_j9wq6w.png",
+      "firstPeriod": "01/01/2023",
+      "secodPeriod": "01/02/2023",
+      "audienceReached": "122.352",
+      "growth": "5",
+      "listEntriesData": "3.500",
+      "trafficPercentage": "2.86",
+      "salesMade": "400",
+      "salesPercentage": "0.32"
+    }
+  ],
+  "dataList": [
+    {
+      "lista": "Ninja Expert Leads cualificados",
+      "fuente": "Emergente Inicio Form, www.juangutierez.com",
+      "extension": "11.825",
+      "datos": {
+        "email": true,
+        "name": false,
+        "phone": true,
+        "instagram": false,
+        "sex": true,
+        "age": false,
+        "country": true,
+        "income": false
+      },
+      "acciones": {
+        "download": false,
+        "senMail": true
+      }
+    },
+    {
+      "lista": "Ninjalab | Content ExpertB",
+      "fuente": "Landing Form, ninjalab.net",
+      "extension": "252.485",
+      "datos": {
+        "email": false,
+        "name": true,
+        "phone": false,
+        "instagram": true,
+        "sex": false,
+        "age": true,
+        "country": false,
+        "income": true
+      },
+      "acciones": {
+        "download": true,
+        "senMail": true
+      }
+    }
+  ]
 }

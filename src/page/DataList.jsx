@@ -1,39 +1,20 @@
 import React from "react";
 import CustomTable from "../assets/CustomTable ";
+import data from "../assets/data/data.json";
+import { useLanguage } from "../assets/languageService/LanguageContext";
 
 const DataList = () => {
-  const data = [
-    {
-      lista: "Ninja Expert Leads cualificados",
-      fuente: "Emergente Inicio Form, www.juangutierez.com",
-      extension: "11.825",
-      datos: "datoA",
-      acciones: {
-        download: false,
-        senMail: true,
-      },
-    },
-    {
-      lista: "Ninjalab | Content ExpertB",
-      fuente: "Landing Form, ninjalab.net",
-      extension: "252.485",
-      datos: "datoB",
-      acciones: {
-        download: true,
-        senMail: true,
-      },
-    },
-    // ... más datos
-  ];
+  const { language } = useLanguage();
+  const dataList = data.dataList;
   return (
     <div className="flex flex-col items-center justify-center  ">
       <div className="text-slate-200 py-4">
         <p className="text-4xl font-light underline underline-offset-8 decoration-0 p-6">
-          Lista de Datos
+          {data[language].dataList.title}
         </p>
       </div>
-      <div className="container mx-auto p-4  w-fit">
-        <CustomTable data={data} />
+      <div className="">
+        <CustomTable data={dataList} languages={data} />
       </div>
     </div>
   );

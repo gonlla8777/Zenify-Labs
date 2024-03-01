@@ -2,95 +2,24 @@ import React, { useState } from "react";
 import { MdChevronLeft } from "react-icons/md";
 import { MdChevronRight } from "react-icons/md";
 import { IoAddCircleOutline } from "react-icons/io5";
-import image1 from "/image/bootcam.png";
-import image2 from "/image/bootcam - 2.png";
-import image3 from "/image/bootcam - 3.png";
-import image4 from "/image/bootcam - 4.png";
-
-const images = [
-  {
-    title: "Imagen 1",
-    description: "Descripción de la imagen 1",
-    src: image1,
-  },
-  {
-    title: "Imagen 2",
-    description: "Descripción de la imagen 2",
-    src: image2,
-  },
-  {
-    title: "Imagen 3",
-    description: "Descripción de la imagen 3",
-    src: image3,
-  },
-  {
-    title: "Imagen 4",
-    description: "Descripción de la imagen 4",
-    src: image4,
-  },
-  {
-    title: "Imagen 1",
-    description: "Descripción de la imagen 1",
-    src: image1,
-  },
-  {
-    title: "Imagen 2",
-    description: "Descripción de la imagen 2",
-    src: image2,
-  },
-  {
-    title: "Imagen 3",
-    description: "Descripción de la imagen 3",
-    src: image3,
-  },
-  {
-    title: "Imagen 4",
-    description: "Descripción de la imagen 4",
-    src: image4,
-  },
-  {
-    title: "Imagen 1",
-    description: "Descripción de la imagen 1",
-    src: image1,
-  },
-  {
-    title: "Imagen 2",
-    description: "Descripción de la imagen 2",
-    src: image2,
-  },
-  {
-    title: "Imagen 3",
-    description: "Descripción de la imagen 3",
-    src: image3,
-  },
-  {
-    title: "Imagen 4",
-    description: "Descripción de la imagen 4",
-    src: image4,
-  },
-  {
-    title: "Imagen 1",
-    description: "Descripción de la imagen 1",
-    src: image1,
-  },
-  {
-    title: "Imagen 2",
-    description: "Descripción de la imagen 2",
-    src: image2,
-  },
-  {
-    title: "Imagen 3",
-    description: "Descripción de la imagen 3",
-    src: image3,
-  },
-  {
-    title: "Imagen 4",
-    description: "Descripción de la imagen 4",
-    src: image4,
-  },
-];
+import data from "../assets/data/data.json";
+import { useLanguage } from "../assets/languageService/LanguageContext";
 
 const Embudo = () => {
+  const { language } = useLanguage();
+  const images = data.embudoData;
+  const [showModal, setShowModal] = useState(false);
+  const [showModalFunnel, setShowModalFunnel] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const openModal = (image) => {
+    setSelectedImage(image);
+    setShowModal(true);
+  };
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const nextSlide = () => {
@@ -103,11 +32,13 @@ const Embudo = () => {
     );
   };
 
+  const [preImg, setPreImg] = useState();
+
   return (
     <div className="flex flex-col items-center justify-center h-full w-full">
       <div className="text-slate-200 py-4">
         <p className="text-4xl font-light underline underline-offset-8 decoration-0 p-6">
-          Embudos Activos!
+          {data[language].funnel.title}
         </p>
       </div>
 
@@ -169,7 +100,8 @@ const Embudo = () => {
                   <img
                     src={image.src}
                     alt={image.title}
-                    className="max-w-full max-h-full"
+                    className="max-w-full max-h-full cursor-pointer"
+                    onClick={() => openModal(image)}
                   />
                   <p className="text-2xl font-semibold text-slate-200">
                     {image.title}
@@ -232,10 +164,15 @@ const Embudo = () => {
           ))}
         </div>
         <div className="flex justify-center items-center pt-16">
-          <div className="grid text-6xl text-slate-50 justify-items-center items-center justify-center text-center rounded-3xl bg-neutral-700 w-1/4 p-2">
+          <button
+            className="grid text-6xl text-slate-50 justify-items-center items-center justify-center text-center rounded-3xl bg-neutral-700 w-1/4 p-2 uppercase"
+            onClick={() => {
+              setShowModalFunnel(true);
+            }}
+          >
             <IoAddCircleOutline />
-            <p className="text-xl">SOLICITAR EMBUDO</p>
-          </div>
+            <p className="text-xl">{data[language].funnel.requestFunnels}</p>
+          </button>
         </div>
       </div>
       <button
@@ -250,6 +187,101 @@ const Embudo = () => {
       >
         <MdChevronRight />
       </button>
+
+      {/* Modal */}
+      {showModal && selectedImage && (
+        <div className="fixed inset-0 bg-black bg-opacity-70 z-50 flex justify-center items-center">
+          <div className="bg-neutral-800 p-8 rounded-lg border border-[#2D2D2D] text-white w-2/4 grid justify-items-center">
+            <div className="grid grid-cols-1 justify-items-start ">
+              <div className="flex">
+                <div className="text-left">
+                  <p htmlFor="objeto" className="m-auto text-2xl">
+                    {selectedImage.title}
+                  </p>
+                  <p htmlFor="objeto" className="m-auto">
+                    {selectedImage.description}
+                  </p>
+                </div>
+              </div>
+              <div className="flex m-auto mt-6">
+                <p className="mr-2">{data[language].funnel.periods}: </p>
+                <div className=" flex m-auto bg-neutral-700 justify-items-center  items-center">
+                  <MdChevronLeft className="text-2xl" />
+                  <p>{selectedImage.firstPeriod}</p>
+                  <p className="mx-2"> {data[language].funnel.to} </p>
+                  <p>{selectedImage.secodPeriod}</p>
+                  <MdChevronRight className="text-2xl" />
+                </div>
+              </div>
+              <div className="flex space-x-6  mx-auto mt-4">
+                <div className="">
+                  <p>{data[language].funnel.audienceReached}</p>
+                  <p>{selectedImage.audienceReached}</p>
+                  <p>
+                    {data[language].funnel.growth}:{" "}
+                    <span className="text-green-600">
+                      %{selectedImage.growth}
+                    </span>
+                  </p>
+                </div>
+                <div>
+                  <p>{data[language].funnel.listEntries}</p>
+                  <p>{selectedImage.listEntriesData}</p>
+                  <p>
+                    {selectedImage.trafficPercentage}%{" "}
+                    {data[language].funnel.ofTraffic}
+                  </p>
+                </div>
+                <div>
+                  <p>{data[language].funnel.salesMade}</p>
+                  <p>{selectedImage.salesMade}</p>
+                  <p>
+                    {selectedImage.salesPercentage}%{" "}
+                    {data[language].funnel.ofTraffic}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="mt-10">
+              <button
+                onClick={closeModal}
+                className="bg-[#469C4A] text-white p-2 m-2 uppercase "
+              >
+                {data[language].funnel.accept}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+      {/* Modal  funnel request*/}
+      {showModalFunnel && (
+        <div className="fixed inset-0 bg-black bg-opacity-70 z-50 flex justify-center items-center">
+          <div className="bg-neutral-800 p-8 rounded-lg border border-[#2D2D2D] text-white w-2/4 grid justify-items-center">
+            <div className="grid grid-cols-1 justify-items-start ">
+              <div className="flex">
+                <div className="text-center">
+                  <p htmlFor="objeto" className="m-auto text-2xl">
+                    {data[language].funnel.requestFunnels}
+                  </p>
+                  <p htmlFor="objeto" className="m-auto pt-10">
+                    {data[language].funnel.funnelMail}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="mt-10">
+              <button
+                onClick={() => {
+                  setShowModalFunnel(false);
+                }}
+                className="bg-[#469C4A] text-white p-2 m-2 uppercase "
+              >
+                {data[language].funnel.accept}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
