@@ -7,14 +7,20 @@ import { CiShoppingTag } from "react-icons/ci";
 import { LuSettings2 } from "react-icons/lu";
 import { FaDownload } from "react-icons/fa";
 import { RiMailSendLine } from "react-icons/ri";
+import languages from "../assets/data/data.json";
+import { useLanguage } from "../assets/languageService/LanguageContext";
 const CustomTable = ({ data }) => {
+  const { language } = useLanguage();
   const columns = useMemo(
     () => [
       {
         Header: () => (
           <div className="flex text-slate-200 justify-center ">
             <IoOpenOutline className="w-fit h-4/6 mr-2" />
-            <p className=" font-medium "> Listas</p>
+            <p className=" font-medium ">
+              {" "}
+              {languages[language].dataList.list}
+            </p>
           </div>
         ),
         accessor: "lista",
@@ -24,7 +30,7 @@ const CustomTable = ({ data }) => {
           <>
             <div>{row.original.lista}</div>
             <div className=" text-neutral-500/90 text-left trun">
-              Fuente: {row.original.fuente}
+              {languages[language].dataList.source}: {row.original.fuente}
             </div>
           </>
         ),
@@ -33,7 +39,10 @@ const CustomTable = ({ data }) => {
         Header: () => (
           <div className="flex text-slate-200  justify-center">
             <IoPeopleSharp className="w-fit h-4/6 mr-2 " />
-            <p className="font-medium"> EXTENSIÓN</p>
+            <p className="font-medium">
+              {" "}
+              {languages[language].dataList.extension}
+            </p>
           </div>
         ),
         accessor: "extension",
@@ -44,18 +53,65 @@ const CustomTable = ({ data }) => {
         Header: () => (
           <div className="flex text-slate-200  justify-center">
             <CiShoppingTag className="w-fit h-4/6 pt-1" />
-            <p className="font-medium pl-2"> DATOS</p>
+            <p className="font-medium pl-2">
+              {" "}
+              {languages[language].dataList.data}
+            </p>
           </div>
         ),
         accessor: "datos",
         headerClass: "bg-neutral-700",
         className: "bg-neutral-600 text-slate-200",
+        Cell: ({ row }) => (
+          <>
+            <div className="flex">
+              {Object.entries(row.original.datos).map(([key, value]) => {
+                if (value) {
+                  let bgColorClass = "";
+                  switch (key) {
+                    case "email":
+                      bgColorClass = "bg-green-600";
+                      break;
+                    case "name":
+                      bgColorClass = "bg-purple-600";
+                      break;
+                    case "instagram":
+                      bgColorClass = "bg-pink-600";
+                      break;
+                    case "sex":
+                      bgColorClass = "bg-[#8A644F]";
+                      break;
+                    case "phone":
+                    case "country":
+                    case "income":
+                      bgColorClass = "bg-gray-600";
+                      break;
+                    case "age":
+                      bgColorClass = "bg-yellow-600";
+                      break;
+                    default:
+                      bgColorClass = "bg-gray-600";
+                  }
+                  return (
+                    <p key={key} className={`p-1 rounded-xl ${bgColorClass}`}>
+                      {key}
+                    </p>
+                  );
+                }
+                return null;
+              })}
+            </div>
+          </>
+        ),
       },
       {
         Header: () => (
           <div className="flex text-slate-200  justify-center">
             <LuSettings2 className="w-fit h-4/6 m-auto pr-2" />
-            <p className="font-medium"> ACCIONES</p>
+            <p className="font-medium">
+              {" "}
+              {languages[language].dataList.actions}
+            </p>
           </div>
         ),
         accessor: "acciones",

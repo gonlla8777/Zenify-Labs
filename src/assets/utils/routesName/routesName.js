@@ -1,7 +1,8 @@
 export const routesName = {
-  homepanel: "/",
+  homepanel: "/panel",
   embudo: "/embudo",
   datalist: "/datalist",
   sendMails: "/sendMails",
   automation: "/automation",
+  login: "/",
 };
