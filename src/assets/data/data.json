@@ -38,6 +38,15 @@
       "extension": "Extensión",
       "data": "Datos",
       "actions": "Acciones"
+    },
+    "sendMails": {
+      "title": "Enviar Correos",
+      "emitters": "Emisores",
+      "public": "Público",
+      "close": "Cerrar",
+      "affair": "Asunto",
+      "saveTemplate": "Guardar Plantilla",
+      "send": "Enviar"
     }
   },
   "english": {
@@ -79,6 +88,15 @@
       "extension": "Extension",
       "data": "Data",
       "actions": "Actions"
+    },
+    "sendMails": {
+      "title": "Send Emails",
+      "emitters": "Emitters",
+      "public": "Public",
+      "close": "Close",
+      "affair": "Affair",
+      "saveTemplate": "Save Template",
+      "send": "Send"
     }
   },
   "embudoData": [
@@ -174,5 +192,20 @@
         "senMail": true
       }
     }
+  ],
+  "dataEmisor": [
+    {
+      "avatar": "https://res.cloudinary.com/di5mf85h3/image/upload/v1706962555/jpgsalta-1-2_1_a1quvn.png",
+      "name": "Juan Gutierrez"
+    },
+    {
+      "avatar": "https://res.cloudinary.com/di5mf85h3/image/upload/v1698287212/b1494cc6-9d0c-44cf-aa3a-8ba9d42aea3c_kfionj.jpg",
+      "name": "Gonzalo Llanos"
+    }
+  ],
+  "dataReceptor": [
+    "Ninja experts Leads Cualificados",
+    "Ninja experts Leads Cualificados 2",
+    "Ninja experts Leads Cualificados 3 "
   ]
 }
