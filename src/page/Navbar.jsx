@@ -2,7 +2,19 @@ import React, { useState, useEffect } from "react";
 import Logo from "/image/Logo.svg";
 import { Link } from "react-router-dom";
 import DropdownMenu from "../assets/menu/dropdownMenu";
+
 const Navbar = () => {
+  const [photoURL, setPhotoURL] = useState("");
+
+  useEffect(() => {
+    const storedUserString = localStorage.getItem("user");
+    if (storedUserString) {
+      const storedUser = JSON.parse(storedUserString);
+      const storedPhotoURL = storedUser.photoURL;
+      setPhotoURL(storedPhotoURL);
+    }
+  }, []);
+
   return (
     <>
       <div>
@@ -16,7 +28,15 @@ const Navbar = () => {
             <p className="pb-7">TM</p>
           </Link>
         </div>
-
+        <img
+          src={
+            photoURL
+              ? photoURL
+              : "https://e7.pngegg.com/pngimages/323/705/png-clipart-user-profile-get-em-cardiovascular-disease-zingah-avatar-miscellaneous-white.png"
+          }
+          className="absolute right-20 top-5 w-10 h-10 rounded-full border border-green-600"
+          alt="Foto de perfil"
+        />
         <DropdownMenu />
       </div>
     </>

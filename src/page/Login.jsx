@@ -3,9 +3,11 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import data from "../assets/data/data.json";
 import { useLanguage } from "../assets/languageService/LanguageContext";
+import { useAuthentication } from "../service/firebase"; // Cambio en la importación
 
 const Login = () => {
   const { language } = useLanguage();
+  const { signInWithGoogle } = useAuthentication(); // Usar el hook useAuthentication
 
   const [credentials, setCredentials] = useState({
     emailOrUsername: "",
@@ -81,10 +83,22 @@ const Login = () => {
                 </div>
                 <div>
                   <div className="flex justify-center text-black text-xl mt-10 ">
-                    <button className="bg-neutral-400 p-5 rounded-xl border-neutral-700 border-2 hover:scale-105 hover:shadow-md hover:shadow-neutral-600 transition-all ">
+                    <button
+                      className="bg-neutral-400 p-5 rounded-xl border-neutral-700 border-2 hover:scale-105 hover:shadow-md hover:shadow-neutral-600 transition-all "
+                      onClick={signInWithGoogle}
+                    >
                       <FaGoogle />
                     </button>
                   </div>
+                </div>
+                <div className="text-neutral-400 font-extralight text-center mt-2 ">
+                  <p>{data[language].login.notAccount}</p>
+                  <Link to={"/register"}>
+                    <p className="text-neutral-400 underline decoration-1 font-extralight text-center cursor-pointer hover:text-neutral-300 transition-all">
+                      {" "}
+                      {data[language].login.toRegister}
+                    </p>
+                  </Link>
                 </div>
               </div>
             </form>

@@ -6,7 +6,22 @@
       "login": "Iniciar Sesión",
       "emailOrUsername": "Email o Nombre de usuario:",
       "password": "Contraseña:",
-      "forgotPassword": "Olvidé la contraseña"
+      "forgotPassword": "Olvidé la contraseña",
+      "notAccount": "¿No tienes cuenta en Zenifi Labs?",
+      "toRegister": "Registrate"
+    },
+    "register": {
+      "motivationalText": "Crea una cuenta con nosotros y",
+      "motivationalTextGreen": "¡comienza tu viaje!",
+      "register": "Registrar",
+      "username": "Nombre de usuario",
+      "firstName": "Nombre",
+      "lastName": "Apellido",
+      "email": "Correo electrónico",
+      "password": "Contraseña",
+      "confirmPassword": "Confirmar Contraseña",
+      "alreadyHaveAccount": "¿Ya tienes una cuenta?",
+      "toLogin": "Inicia sesión aquí"
     },
     "home": {
       "title": "Bienvenido",
@@ -56,7 +71,22 @@
       "login": "Log In",
       "emailOrUsername": "Email or Username:",
       "password": "Password:",
-      "forgotPassword": "Forgot Password"
+      "forgotPassword": "Forgot Password",
+      "notAccount": "Don't have an account at Zenifi Labs?",
+      "toRegister": "Register"
+    },
+    "register": {
+      "motivationalText": "Create an account with us and",
+      "motivationalTextGreen": "start your journey!",
+      "register": "Register",
+      "username": "Username",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "password": "Password",
+      "confirmPassword": "Confirm Password",
+      "alreadyHaveAccount": "Already have an account?",
+      "toLogin": "Log in here"
     },
     "home": {
       "title": "Welcome",
