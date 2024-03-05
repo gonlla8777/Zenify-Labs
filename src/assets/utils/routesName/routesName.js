@@ -5,4 +5,5 @@ export const routesName = {
   sendMails: "/sendMails",
   automation: "/automation",
   login: "/",
+  register: "/register",
 };
