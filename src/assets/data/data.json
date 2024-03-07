@@ -61,7 +61,22 @@
       "close": "Cerrar",
       "affair": "Asunto",
       "saveTemplate": "Guardar Plantilla",
-      "send": "Enviar"
+      "send": "Enviar",
+      "error": "¡Error!",
+      "errorEmitters": "Falta de emisores.",
+      "errorPublic": "Falta de público.",
+      "errorAffair": "Falta de asunto.",
+      "errorTextEditor": "Falta de contenido en el editor de texto.",
+      "accept": "Aceptar",
+      "congratulations": "Felicidades",
+      "sentSuccessfully": "Mensaje enviado exitosamente.",
+      "saveSuccessfully": "Plantilla guardada exitosamente."
+    },
+    "automations": {
+      "title": "Automatizaciones",
+      "when": "Cuando",
+      "sendTemplate": "enviar plantilla",
+      "createAutomation": "Create Automation"
     }
   },
   "english": {
@@ -124,9 +139,18 @@
       "emitters": "Emitters",
       "public": "Public",
       "close": "Close",
-      "affair": "Affair",
+      "affair": "Subject",
       "saveTemplate": "Save Template",
-      "send": "Send"
+      "send": "Send",
+      "error": "Error!",
+      "errorEmitters": "Missing emitters.",
+      "errorPublic": "Missing public.",
+      "errorAffair": "Missing subject.",
+      "errorTextEditor": "Missing content in the text editor.",
+      "accept": "Accept",
+      "congratulations": "Congratulations",
+      "sentSuccessfully": "Message sent successfully.",
+      "saveSuccessfully": "Template saved successfully."
     }
   },
   "embudoData": [
@@ -237,5 +261,34 @@
     "Ninja experts Leads Cualificados",
     "Ninja experts Leads Cualificados 2",
     "Ninja experts Leads Cualificados 3 "
-  ]
+  ],
+  "automatizacionesData": [
+    {
+      "automatizacion": "entrada",
+      "objeto": "Ninja Expert Leads cualificados",
+      "plantilla": "Libro y curso"
+    },
+    {
+      "automatizacion": "entrada",
+      "objeto": "Ninja Expert cualificados",
+      "plantilla": "Libro y curso"
+    },
+    {
+      "automatizacion": "entrada",
+      "objeto": "Ninja Expert ",
+      "plantilla": "Libro y curso"
+    },
+    {
+      "automatizacion": "entrada",
+      "objeto": "Ninja Expert cualificados",
+      "plantilla": "Libro y curso"
+    }
+  ],
+  "sendTemplate": [
+    "Ninja Expert cualificados 1",
+    "Ninja Expert cualificados 2",
+    "Ninja Expert cualificados 3",
+    "Ninja Expert cualificados 4"
+  ],
+  "templates": ["Plantilla 1", "Plantilla 2", "Plantilla 3", "Plantilla 4"]
 }

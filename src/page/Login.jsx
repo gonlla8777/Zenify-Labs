@@ -82,7 +82,7 @@ const Login = () => {
                   </Link>
                 </div>
                 <div>
-                  <div className="flex justify-center text-black text-xl mt-10 ">
+                  <div className="flex justify-center text-black text-xl mt-2 ">
                     <button
                       className="bg-neutral-400 p-5 rounded-xl border-neutral-700 border-2 hover:scale-105 hover:shadow-md hover:shadow-neutral-600 transition-all "
                       onClick={signInWithGoogle}

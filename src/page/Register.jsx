@@ -49,9 +49,9 @@ const Register = () => {
 
   return (
     <>
-      <div className="w-auto min-h-screen h-auto pt-20">
+      <div className="w-auto min-h-screen h-auto ">
         <div className="grid  sm:grid-cols-2 grid-cols-1 gap-1">
-          <div className=" pl-2 sm:pl-10">
+          <div className=" pl-2 sm:pl-10 pt-20">
             <p className="text-white text-xl md:text-4xl lg:text-7xl uppercase font-light  ">
               {data[language].register.motivationalText}{" "}
               <span className="text-green-600">

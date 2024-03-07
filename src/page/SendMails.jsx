@@ -11,16 +11,17 @@ import { useLanguage } from "../assets/languageService/LanguageContext";
 const SendMails = () => {
   const { language } = useLanguage();
   const dataEmisor = data.dataEmisor;
-
   const dataReceptor = data.dataReceptor;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalReceptorOpen, setIsModalReceptorOpen] = useState(false);
   const [selectedEmisor, setSelectedEmisor] = useState(dataEmisor[0]);
   const [selectedReceivers, setSelectedReceivers] = useState([]);
-
+  const [showModalErrors, setShowModalErrors] = useState(false);
+  const [showModalSend, setShowModalSend] = useState(false);
   const [subject, setSubject] = useState("");
   const [content, setContent] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
 
   const handleEmisorClick = () => {
     setIsModalOpen(!isModalOpen);
@@ -51,8 +52,36 @@ const SendMails = () => {
 
   const handleSubjectChange = (e) => setSubject(e.target.value);
   const handleContentChange = (value) => setContent(value);
+  const [errors, setErrors] = useState([]);
 
-  const handleSubmit = () => {
+  const handleSubmit = (action) => {
+    // Verificar si hay errores
+    if (!selectedEmisor) {
+      errors.push({ message: data[language].sendMails.errorEmitters });
+    }
+    if (selectedReceivers.length === 0) {
+      errors.push({ message: data[language].sendMails.errorPublic });
+    }
+    if (!subject.trim()) {
+      errors.push({ message: data[language].sendMails.errorAffair });
+    }
+
+    // Eliminar etiquetas HTML y espacios en blanco del contenido
+    const contentWithoutTags = content.replace(/<[^>]*>?/gm, "").trim();
+
+    // Verificar si el contenido es solo etiquetas <br> o está vacío
+    if (!contentWithoutTags || contentWithoutTags === "<br>") {
+      errors.push({ message: data[language].sendMails.errorTextEditor });
+    }
+
+    // Si hay errores, mostrar el modal de errores
+    if (errors.length > 0) {
+      setShowModalErrors(true);
+      console.log("Errores:", errors);
+      return;
+    }
+
+    // Si no hay errores, proceder con el envío o guardado
     console.log("Datos del correo a enviar:", {
       sender: selectedEmisor.name,
       recipients: selectedReceivers,
@@ -60,13 +89,24 @@ const SendMails = () => {
       content,
     });
 
-    // Lógica para enviar el correo al backend
+    // Lógica para enviar el correo al backend o guardar la plantilla
+
+    // Simular envío o guardado exitoso
+    if (action === "send") {
+      setSuccessMessage({ message: data[language].sendMails.sentSuccessfully });
+    } else if (action === "save") {
+      setSuccessMessage({ message: data[language].sendMails.saveSuccessfully });
+    }
+
+    setShowModalSend(true);
   };
+
   const handleRemoveEmisor = () => {
     setSelectedEmisor(null);
   };
+
   return (
-    <div className="flex flex-col items-center  justify-center ">
+    <div className="flex flex-col items-center justify-center ">
       <div className="text-slate-200 py-4 ">
         <p className="text-4xl font-light underline underline-offset-8 decoration-0 p-6">
           {data[language].sendMails.title}
@@ -149,7 +189,7 @@ const SendMails = () => {
               />
 
               {isModalReceptorOpen && (
-                <div className="fixed inset-0 bg-black bg-opacity-70 z-50 flex justify-center items-center">
+                <div className="fixed inset-0 bg-black bg-opacity-70 z-50 flex justify-center items-center ">
                   <div className="bg-neutral-800 p-8 rounded-lg border border-white text-stone-600">
                     <div className="modal ">
                       <ul>
@@ -221,20 +261,85 @@ const SendMails = () => {
           <div className="flex justify-end ">
             <button
               className="w-auto h-auto mt-20 mr-2 p-2 bg-[#484848] text-white flex text-xl font-normal uppercase"
-              onClick={handleSubmit}
+              onClick={() => handleSubmit("save")}
             >
               <IoSaveOutline className="text-3xl " />
               {data[language].sendMails.saveTemplate}
             </button>
             <button
               className="w-auto h-auto mt-20 p-2 bg-green-600 text-white flex text-xl font-normal uppercase"
-              onClick={handleSubmit}
+              onClick={() => handleSubmit("send")}
             >
               <RiMailSendLine className="text-3xl " />
               {data[language].sendMails.send}
             </button>
           </div>
         </div>
+        {/* Modal  Errors*/}
+        {showModalErrors && (
+          <div className="fixed inset-0 bg-black bg-opacity-70 z-50 flex justify-center items-center">
+            <div className="bg-neutral-800 p-8 rounded-lg border border-[#2D2D2D] text-white w-2/4 grid justify-items-center">
+              <div className="grid grid-cols-1 justify-items-start ">
+                <div className="flex">
+                  <div className="text-center">
+                    <p htmlFor="objeto" className="m-auto text-2xl">
+                      {data[language].sendMails.error}
+                    </p>
+                    {errors.map((error, index) => (
+                      <p key={index} className="m-auto">
+                        <p key={index}>{error.message || error}</p>
+                      </p>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <div className="mt-10">
+                <button
+                  onClick={() => {
+                    setShowModalErrors(false);
+                    setErrors([]);
+                  }}
+                  className="bg-[#469C4A] text-white p-2 m-2 uppercase "
+                >
+                  {data[language].sendMails.accept}
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+        {/* Modal  Send or Save*/}
+        {showModalSend && (
+          <div className="fixed inset-0 bg-black bg-opacity-70 z-50 flex justify-center items-center">
+            <div className="bg-neutral-800 p-8 rounded-lg border border-[#2D2D2D] text-white w-2/4 grid justify-items-center">
+              <div className="grid grid-cols-1 justify-items-start ">
+                <div className="flex">
+                  <div className="text-center">
+                    <p htmlFor="objeto" className="m-auto text-2xl">
+                      {data[language].sendMails.congratulations}
+                    </p>
+
+                    <p className="m-auto">
+                      {successMessage && (
+                        <p className="m-auto">{successMessage.message}</p>
+                      )}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="mt-10">
+                <button
+                  onClick={() => {
+                    setShowModalSend(false);
+                    setErrors([]);
+                  }}
+                  className="bg-[#469C4A] text-white p-2 m-2 uppercase "
+                >
+                  {data[language].sendMails.accept}
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
