@@ -1,37 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { IoToggle } from "react-icons/io5";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { IoAddCircleOutline } from "react-icons/io5";
 import Switch from "@mui/material/Switch";
+import { useLanguage } from "../assets/languageService/LanguageContext";
+
+// Importa el archivo JSON
+import data from "../assets/data/data.json";
 
 const Automation = () => {
+  const { language } = useLanguage();
   const [showModal, setShowModal] = useState(false);
   const [automatizacion, setAutomatizacion] = useState("");
   const [objeto, setObjeto] = useState("");
   const [plantilla, setPlantilla] = useState("");
   const [tipoAutomatizacion, setTipoAutomatizacion] = useState("entrada");
-  const [automatizaciones, setAutomatizaciones] = useState([
-    {
-      automatizacion: "entrada",
-      objeto: "Ninja Expert Leads cualificados",
-      plantilla: "Libro y curso",
-    },
-    {
-      automatizacion: "entrada",
-      objeto: "Ninja Expert cualificados",
-      plantilla: "Libro y curso",
-    },
-    {
-      automatizacion: "entrada",
-      objeto: "Ninja Expert ",
-      plantilla: "Libro y curso",
-    },
-    {
-      automatizacion: "entrada",
-      objeto: "Ninja Expert cualificados",
-      plantilla: "Libro y curso",
-    },
-  ]);
+  const [automatizaciones, setAutomatizaciones] = useState([]);
+
+  useEffect(() => {
+    // Establece automatizaciones con los datos del archivo JSON
+    setAutomatizaciones(data.automatizacionesData);
+  }, []);
 
   const handleCreateAutomatizacion = () => {
     const newAutomatizacion = {
@@ -60,7 +49,7 @@ const Automation = () => {
     <div className="flex flex-col items-center justify-center">
       <div className="text-slate-200 py-4">
         <p className="text-4xl font-light underline underline-offset-8 decoration-0 p-6">
-          Automatizaciones
+          {data[language].automations.title}
         </p>
       </div>
       <div className="grid text-white border border-white rounded-b-2xl justify-center items-center lg:text-xl font-light ">
@@ -72,10 +61,11 @@ const Automation = () => {
             }  ${index === automatizaciones.length - 1 ? "rounded-b-2xl" : ""}`}
           >
             <p>
-              Cuando <span>{item.automatizacion}</span> :{" "}
+              {data[language].automations.when}{" "}
+              <span>{item.automatizacion}</span> :{" "}
             </p>
             <p>{item.objeto} ,</p>
-            <p>enviar plantilla : </p>
+            <p>{data[language].automations.sendTemplate} : </p>
             <p className="md:pr-24 lg:pr-80 pr-5">{item.plantilla}</p>
             <div className="ml-auto flex items-center space-x-5 px-10">
               <Switch defaultChecked color="success" className="mx-2" />
@@ -93,7 +83,9 @@ const Automation = () => {
           onClick={() => setShowModal(true)}
         >
           <IoAddCircleOutline />
-          <p className="text-xl">CREAR AUTOMATIZACIÓN</p>
+          <p className="text-xl uppercase">
+            {data[language].automations.createAutomation}
+          </p>
         </div>
       </div>
 
@@ -101,12 +93,14 @@ const Automation = () => {
         <div className="fixed inset-0 bg-black bg-opacity-70 z-50 flex justify-center items-center">
           <div className="bg-neutral-800 p-8 rounded-lg border border-[#2D2D2D] text-white w-2/4 grid justify-items-center">
             <h2 className="text-2xl  mb-10 uppercase font-light">
-              Crear Automatización
+              {data[language].automations.createAutomation}
             </h2>
             <div className="grid grid-cols-1 justify-items-start ">
               <div className="flex">
                 <div>
-                  <label htmlFor="tipoAutomatizacion">Cuando :</label>
+                  <label htmlFor="tipoAutomatizacion">
+                    {data[language].automations.when} :
+                  </label>
                   <select
                     id="tipoAutomatizacion"
                     value={tipoAutomatizacion}
@@ -130,18 +124,11 @@ const Automation = () => {
                     onChange={(e) => setObjeto(e.target.value)}
                     className="mb-4 p-2 mx-5  rounded bg-[#424242]"
                   >
-                    <option value="Ninja Expert cualificados 1">
-                      Ninja Expert cualificados 1
-                    </option>
-                    <option value="Ninja Expert cualificados 2">
-                      Ninja Expert cualificados 2
-                    </option>
-                    <option value="Ninja Expert cualificados 3">
-                      Ninja Expert cualificados 3
-                    </option>
-                    <option value="Ninja Expert cualificados 4">
-                      Ninja Expert cualificados 4
-                    </option>
+                    {data.sendTemplate.map((template, index) => (
+                      <option key={index} value={template}>
+                        {template}
+                      </option>
+                    ))}
                   </select>
                 </div>
               </div>
@@ -157,10 +144,11 @@ const Automation = () => {
                   onChange={(e) => setPlantilla(e.target.value)}
                   className="mb-4 p-2 mx-5  rounded bg-[#424242]"
                 >
-                  <option value="Plantailla 1">Plantilla 1</option>
-                  <option value="Plantilla 2">Plantailla 2</option>
-                  <option value="Plantilla 3">Plantilla 3</option>
-                  <option value="Plantilla 4">Plantilla 4</option>
+                  {data.templates.map((template, index) => (
+                    <option key={index} value={template}>
+                      {template}
+                    </option>
+                  ))}
                 </select>
               </div>
             </div>
