@@ -1,5 +1,6 @@
-import { Routes, Route } from "react-router-dom";
-import { routesName } from "../assets/utils/routesName/routesName.js";
+import React, { useState, useEffect } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
+import { auth } from "../service/firebase";
 import Homepanel from "../page/Homepanel.jsx";
 import Embudo from "../page/Embudo.jsx";
 import DataList from "../page/DataList.jsx";
@@ -7,17 +8,56 @@ import SendMails from "../page/SendMails.jsx";
 import Automation from "../page/Automation.jsx";
 import Login from "../page/Login.jsx";
 import Register from "../page/Register.jsx";
+import NotFound from "../page/NotFound.jsx"; // Importa tu componente de página de error 404
+import { routesName } from "../assets/utils/routesName/routesName.js";
 
 const AppRouter = () => {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        setUser(user);
+      } else {
+        setUser(null);
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
+
   return (
     <Routes>
-      <Route path={routesName.login} element={<Login />} />
-      <Route path={routesName.register} element={<Register />} />
-      <Route path={routesName.homepanel} element={<Homepanel />} />
-      <Route path={routesName.embudo} element={<Embudo />} />
-      <Route path={routesName.datalist} element={<DataList />} />
-      <Route path={routesName.sendMails} element={<SendMails />} />
-      <Route path={routesName.automation} element={<Automation />} />
+      <Route
+        path={routesName.login}
+        element={!user ? <Login /> : <Navigate to={routesName.homepanel} />}
+      />
+      <Route
+        path={routesName.register}
+        element={!user ? <Register /> : <Navigate to={routesName.homepanel} />}
+      />
+      <Route
+        path={routesName.homepanel}
+        element={user ? <Homepanel /> : <Navigate to={routesName.login} />}
+      />
+      <Route
+        path={routesName.embudo}
+        element={user ? <Embudo /> : <Navigate to={routesName.login} />}
+      />
+      <Route
+        path={routesName.datalist}
+        element={user ? <DataList /> : <Navigate to={routesName.login} />}
+      />
+      <Route
+        path={routesName.sendMails}
+        element={user ? <SendMails /> : <Navigate to={routesName.login} />}
+      />
+      <Route
+        path={routesName.automation}
+        element={user ? <Automation /> : <Navigate to={routesName.login} />}
+      />
+      {/* Route para manejar todas las demás rutas */}
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };
