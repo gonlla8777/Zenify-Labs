@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 import data from "../assets/data/data.json";
 import { useLanguage } from "../assets/languageService/LanguageContext";
 import { useAuthentication } from "../service/firebase"; // Cambio en la importación
+import api from "../service/api";
 
 const Login = () => {
   const { language } = useLanguage();
   const { signInWithGoogle } = useAuthentication(); // Usar el hook useAuthentication
-
   const [credentials, setCredentials] = useState({
-    emailOrUsername: "",
+    nickname: "",
     password: "",
   });
 
@@ -24,9 +24,27 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Aquí puedes agregar la lógica para iniciar sesión utilizando los datos de credentials
-    console.log("Datos de inicio de sesión:", credentials);
+
+    api
+      .fetchPostEndpoint("login", {
+        nickname: credentials.nickname,
+        password: credentials.password,
+      })
+      .then((response) => {
+        if (response.status === 200) {
+          console.log(response.data);
+        }
+        const token = response.headers.authorization;
+        console.log(token);
+        if (token) {
+          api.saveAuthToken(token);
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
+
   return (
     <>
       <div className="w-auto min-h-screen h-auto pt-20">
@@ -44,12 +62,12 @@ const Login = () => {
             <form onSubmit={handleSubmit} className="">
               <div className="mt-10">
                 <p className="text-neutral-400 font-extralight text-left">
-                  {data[language].login.emailOrUsername} <br />
+                  {data[language].login.nickname} <br />
                   <input
                     className="w-full rounded-sm border border-neutral-600 "
                     type="text"
-                    name="emailOrUsername"
-                    value={credentials.emailOrUsername}
+                    name="nickname"
+                    value={credentials.nickname}
                     onChange={handleChange}
                   />
                 </p>
@@ -72,14 +90,12 @@ const Login = () => {
               </div>
               <div className=" divide-neutral-700 divide-y-2">
                 <div>
-                  <Link to={"/panel"}>
-                    <button
-                      type="submit"
-                      className="bg-[#469C4A] p-5 m-10 rounded-xl hover:scale-105 hover:shadow-md hover:shadow-neutral-600 transition-all "
-                    >
-                      {data[language].login.login}
-                    </button>
-                  </Link>
+                  <button
+                    type="submit"
+                    className="bg-[#469C4A] p-5 m-10 rounded-xl hover:scale-105 hover:shadow-md hover:shadow-neutral-600 transition-all "
+                  >
+                    {data[language].login.login}
+                  </button>
                 </div>
                 <div>
                   <div className="flex justify-center text-black text-xl mt-2 ">

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import data from "../assets/data/data.json";
 import { useLanguage } from "../assets/languageService/LanguageContext";
 import { useAuthentication } from "../service/firebase"; // Cambio en la importación
+import api from "../service/api";
 
 const Register = () => {
   const { language } = useLanguage();
@@ -26,25 +27,19 @@ const Register = () => {
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      const response = await fetch("/api/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(credentials),
+
+    api
+      .fetchPostEndpoint("register", credentials)
+      .then((response) => {
+        if (response.status === 201) {
+          console.log(response.data);
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
       });
-      if (response.ok) {
-        console.log("Registro exitoso");
-        // Aquí podrías redirigir al usuario a una página de éxito o hacer otras acciones
-      } else {
-        console.error("Error al registrar");
-      }
-    } catch (error) {
-      console.error("Error:", error);
-    }
   };
 
   return (
