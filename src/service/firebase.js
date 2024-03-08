@@ -16,42 +16,44 @@ const firebaseConfig = {
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 const auth = firebaseApp.auth();
 
+const handleAuthSuccess = (user, redirectPath) => {
+  const name = user.displayName;
+  const photoURL = user.photoURL;
+  localStorage.setItem("user", JSON.stringify({ name, photoURL }));
+  console.log("Usuario autenticado:", user);
+  window.location.href = redirectPath;
+};
+
+const handleAuthError = (error) => {
+  console.error("Error al autenticar:", error);
+};
+
+const handleSignOutSuccess = () => {
+  localStorage.removeItem("user");
+  console.log("Sesión cerrada correctamente");
+  window.location.href = "/";
+};
+
+const handleSignOutError = (error) => {
+  console.error("Error al cerrar sesión:", error);
+};
+
 const useAuthentication = () => {
   const signInWithGoogle = () => {
     const provider = new firebase.auth.GoogleAuthProvider();
     firebase
       .auth()
       .signInWithPopup(provider)
-      .then((result) => {
-        const user = result.user;
-        const name = user.displayName;
-        const photoURL = user.photoURL;
-        localStorage.setItem("user", JSON.stringify({ name, photoURL }));
-
-        console.log("Usuario autenticado:", result.user);
-        // Redirigir después de que los datos del usuario se hayan guardado
-
-        window.location.href = "/#/panel";
-      })
-      .catch((error) => {
-        // Manejar errores de inicio de sesión
-        console.error("Error al autenticar:", error);
-      });
+      .then((result) => handleAuthSuccess(result.user, "/#/panel"))
+      .catch(handleAuthError);
   };
 
   const signOut = () => {
     firebase
       .auth()
       .signOut()
-      .then(() => {
-        // Limpiar datos del usuario del localStorage al cerrar sesión
-        localStorage.removeItem("user");
-        // Redireccionar después de que se limpien los datos
-        window.location.href = "/";
-      })
-      .catch((error) => {
-        console.error("Error al desloguear:", error);
-      });
+      .then(handleSignOutSuccess)
+      .catch(handleSignOutError);
   };
 
   return { signInWithGoogle, signOut };

@@ -52,7 +52,7 @@ const Register = () => {
       <div className="w-auto min-h-screen h-auto ">
         <div className="grid  sm:grid-cols-2 grid-cols-1 gap-1">
           <div className=" pl-2 sm:pl-10 pt-20">
-            <p className="text-white text-xl md:text-4xl lg:text-7xl uppercase font-light  ">
+            <p className="bg-clip-text text-transparent bg-gradient-to-r from-stone-700 to-stone-500 text-xl md:text-4xl lg:text-7xl uppercase font-bold  ">
               {data[language].register.motivationalText}{" "}
               <span className="text-green-600">
                 {data[language].register.motivationalTextGreen}
