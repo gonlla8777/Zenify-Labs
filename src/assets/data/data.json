@@ -151,6 +151,12 @@
       "congratulations": "Congratulations",
       "sentSuccessfully": "Message sent successfully.",
       "saveSuccessfully": "Template saved successfully."
+    },
+    "automations": {
+      "title": "Automations",
+      "when": "When",
+      "sendTemplate": "Send Template",
+      "createAutomation": "Create Automation"
     }
   },
   "embudoData": [
