@@ -31,7 +31,7 @@ const useAuthentication = () => {
         console.log("Usuario autenticado:", result.user);
         // Redirigir después de que los datos del usuario se hayan guardado
 
-        window.location.href = "/panel";
+        window.location.href = "/#/panel";
       })
       .catch((error) => {
         // Manejar errores de inicio de sesión
