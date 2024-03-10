@@ -6,7 +6,7 @@ import { IoAddCircleOutline } from "react-icons/io5";
 import { IoSaveOutline } from "react-icons/io5";
 import { RiMailSendLine } from "react-icons/ri";
 import data from "../assets/data/data.json";
-import { useLanguage } from "../assets/languageService/LanguageContext";
+import { useLanguage } from "../context/hooks";
 
 const SendMails = () => {
   const { language } = useLanguage();

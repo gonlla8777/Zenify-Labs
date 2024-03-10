@@ -3,7 +3,7 @@ import { MdChevronLeft } from "react-icons/md";
 import { MdChevronRight } from "react-icons/md";
 import { IoAddCircleOutline } from "react-icons/io5";
 import data from "../assets/data/data.json";
-import { useLanguage } from "../assets/languageService/LanguageContext";
+import { useLanguage } from "../context/hooks";
 
 const Embudo = () => {
   const { language } = useLanguage();

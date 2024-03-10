@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { IoToggle } from "react-icons/io5";
+
 import { FaRegTrashAlt } from "react-icons/fa";
 import { IoAddCircleOutline } from "react-icons/io5";
 import Switch from "@mui/material/Switch";
-import { useLanguage } from "../assets/languageService/LanguageContext";
 
 // Importa el archivo JSON
 import data from "../assets/data/data.json";
+import { useLanguage } from "../context/hooks";
 
 const Automation = () => {
   const { language } = useLanguage();

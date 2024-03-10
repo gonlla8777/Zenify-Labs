@@ -1,14 +1,15 @@
 import { FaGoogle } from "react-icons/fa";
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import data from "../assets/data/data.json";
-import { useLanguage } from "../assets/languageService/LanguageContext";
-import { useAuthentication } from "../service/firebase"; // Cambio en la importación
-import api from "../service/api";
+
+import { useAuthentication } from "../service/authentication"; // Cambio en la importación
+
+import { useLanguage } from "../context/hooks";
 
 const Register = () => {
   const { language } = useLanguage();
-  const { signInWithGoogle } = useAuthentication(); // Usar el hook useAuthentication
+  const { signInWithGoogle, signUp } = useAuthentication(); // Usar el hook useAuthentication
 
   const [credentials, setCredentials] = useState({
     username: "",
@@ -29,17 +30,7 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    api
-      .fetchPostEndpoint("register", credentials)
-      .then((response) => {
-        if (response.status === 201) {
-          console.log(response.data);
-        }
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+    signUp(credentials);
   };
 
   return (

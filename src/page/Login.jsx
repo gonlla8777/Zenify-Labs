@@ -1,14 +1,14 @@
+import { useState } from "react";
 import { FaGoogle } from "react-icons/fa";
-import React, { useState } from "react";
 import { Link } from "react-router-dom";
+
+import { useAuthentication } from "../service/authentication"; // Cambio en la importación
+import { useLanguage } from "../context/hooks";
 import data from "../assets/data/data.json";
-import { useLanguage } from "../assets/languageService/LanguageContext";
-import { useAuthentication } from "../service/firebase"; // Cambio en la importación
-import api from "../service/api";
 
 const Login = () => {
   const { language } = useLanguage();
-  const { signInWithGoogle } = useAuthentication(); // Usar el hook useAuthentication
+  const { signInWithGoogle, signIn } = useAuthentication(); // Usar el hook useAuthentication
   const [credentials, setCredentials] = useState({
     nickname: "",
     password: "",
@@ -24,25 +24,16 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    api
-      .fetchPostEndpoint("login", {
-        nickname: credentials.nickname,
-        password: credentials.password,
-      })
-      .then((response) => {
-        if (response.status === 200) {
-          console.log(response.data);
-        }
-        const token = response.headers.authorization;
-        console.log(token);
-        if (token) {
-          api.saveAuthToken(token);
-        }
-      })
-      .catch((error) => {
-        console.error("Error:", error);
+    signIn(credentials).then(() => {
+      setCredentials({
+        nickname: "",
+        password: "",
       });
+
+      // se debería utilizar react-router-dom para redireccionar pero por alguna razón no funciona correctamente
+
+      window.location.reload();
+    });
   };
 
   return (
@@ -52,9 +43,9 @@ const Login = () => {
           <div className=" pl-2 sm:pl-10">
             <p className="bg-clip-text text-transparent bg-gradient-to-r from-stone-700 to-stone-500  text-xl md:text-4xl lg:text-7xl uppercase font-bold  ">
               {data[language].login.motivationalText}{" "}
-              <spam className="text-green-600">
+              <span className="text-green-600">
                 {data[language].login.motivationalTextGreen}
-              </spam>
+              </span>
             </p>
           </div>
           <div className="static    col-span-1  w-fit grid  justify-items-center mx-auto bg-neutral-700/30 p-10 rounded-lg text-white border-neutral-700 border-4 shadow-neutral-700/50 shadow-lg hover:scale-105 transition-all min-w-72">
@@ -90,23 +81,12 @@ const Login = () => {
               </div>
               <div className=" divide-neutral-700 divide-y-2">
                 <div>
-<<<<<<< HEAD
                   <button
                     type="submit"
                     className="bg-[#469C4A] p-5 m-10 rounded-xl hover:scale-105 hover:shadow-md hover:shadow-neutral-600 transition-all "
                   >
                     {data[language].login.login}
                   </button>
-=======
-                  <Link to={"/panel"}>
-                    <button
-                      type="submit"
-                      className="bg-[#469C4A] p-5 m-10 rounded-xl hover:scale-105  hover:bg-[#378a3b] transition-all "
-                    >
-                      {data[language].login.login}
-                    </button>
-                  </Link>
->>>>>>> origin/Gonzalo
                 </div>
                 <div>
                   <div className="flex justify-center text-black text-xl mt-2 ">

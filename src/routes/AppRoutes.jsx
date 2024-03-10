@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { auth } from "../service/firebase";
+
 import Homepanel from "../page/Homepanel.jsx";
 import Embudo from "../page/Embudo.jsx";
 import DataList from "../page/DataList.jsx";
@@ -10,21 +9,10 @@ import Login from "../page/Login.jsx";
 import Register from "../page/Register.jsx";
 import NotFound from "../page/NotFound.jsx"; // Importa tu componente de página de error 404
 import { routesName } from "../assets/utils/routesName/routesName.js";
+import { useUser } from "../context/hooks.js";
 
 const AppRouter = () => {
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      if (user) {
-        setUser(user);
-      } else {
-        setUser(null);
-      }
-    });
-
-    return () => unsubscribe();
-  }, []);
+  const { user } = useUser();
 
   return (
     <Routes>

@@ -1,6 +1,7 @@
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
+import api from "./api";
 
 const firebaseConfig = {
   apiKey: "AIzaSyA4U2rjhSQeYkv-7sEcLSU8DQwZ2ZrqMkw",
@@ -48,7 +49,7 @@ const useAuthentication = () => {
       .catch(handleAuthError);
   };
 
-  const signOut = () => {
+  const signOutWithGoogle = () => {
     firebase
       .auth()
       .signOut()
@@ -56,7 +57,44 @@ const useAuthentication = () => {
       .catch(handleSignOutError);
   };
 
-  return { signInWithGoogle, signOut };
+  const signIn = (credentials) => {
+    return api
+      .fetchPostEndpoint("login", credentials)
+      .then((response) => {
+        if (response.status === 200) {
+          console.log(response.data);
+          handleAuthSuccess(response.data.data, "/#/panel");
+        }
+      })
+      .catch(handleAuthError);
+  };
+
+  const signUp = (credentials) => {
+    api
+      .fetchPostEndpoint("register", credentials)
+      .then((response) => {
+        if (response.status === 201) {
+          console.log(response.data);
+          handleAuthSuccess(response.data.data, "/#/panel");
+        }
+      })
+      .catch(handleAuthError);
+  };
+
+  const signOut = () => {
+    api
+      .fetchPostEndpoint("logout")
+      .then((response) => {
+        if (response.status === 200) {
+          console.log(response.data);
+        }
+
+        handleSignOutSuccess();
+      })
+      .catch(handleSignOutError);
+  };
+
+  return { signInWithGoogle, signOutWithGoogle, signOut, signIn, signUp };
 };
 
 export { auth, useAuthentication };

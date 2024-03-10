@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { IoSettings } from "react-icons/io5";
-import { useLanguage } from "../languageService/LanguageContext";
+
 import { MdOutlineLogin } from "react-icons/md";
-import { useAuthentication } from "../../service/firebase"; // Cambio en la importación
+import { useAuthentication } from "../../service/authentication"; // Cambio en la importación
+import { useLanguage } from "../../context/hooks";
 
 const DropdownMenu = () => {
   const [isOpen, setIsOpen] = useState(false);

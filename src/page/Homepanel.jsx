@@ -7,7 +7,8 @@ import { FiSend } from "react-icons/fi";
 import { RiMailStarLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import data from "../assets/data/data.json";
-import { useLanguage } from "../assets/languageService/LanguageContext";
+import { useLanguage } from "../context/hooks";
+
 const Homepanel = () => {
   const name = "Juan";
   const { language } = useLanguage();

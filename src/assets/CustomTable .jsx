@@ -8,7 +8,8 @@ import { LuSettings2 } from "react-icons/lu";
 import { FaDownload } from "react-icons/fa";
 import { RiMailSendLine } from "react-icons/ri";
 import languages from "../assets/data/data.json";
-import { useLanguage } from "../assets/languageService/LanguageContext";
+import { useLanguage } from "../context/hooks";
+
 const CustomTable = ({ data }) => {
   const { language } = useLanguage();
   const columns = useMemo(

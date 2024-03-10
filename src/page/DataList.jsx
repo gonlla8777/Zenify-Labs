@@ -1,7 +1,7 @@
 import React from "react";
 import CustomTable from "../assets/CustomTable ";
 import data from "../assets/data/data.json";
-import { useLanguage } from "../assets/languageService/LanguageContext";
+import { useLanguage } from "../context/hooks";
 
 const DataList = () => {
   const { language } = useLanguage();

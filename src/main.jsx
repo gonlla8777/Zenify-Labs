@@ -2,13 +2,15 @@
 
 import React from "react";
 import { HashRouter } from "react-router-dom";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
 
-ReactDOM.render(
+const container = document.getElementById("root");
+const root = createRoot(container);
+
+root.render(
   <HashRouter>
     <App />
-  </HashRouter>,
-  document.getElementById("root")
+  </HashRouter>
 );
