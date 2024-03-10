@@ -57,7 +57,7 @@ const Login = () => {
               </spam>
             </p>
           </div>
-          <div className="static    col-span-1  w-fit grid  justify-items-center mx-auto bg-neutral-700/30 p-10 rounded-lg text-white border-neutral-700 border-4 shadow-neutral-700 shadow-2xl hover:scale-105 transition-all min-w-72">
+          <div className="static    col-span-1  w-fit grid  justify-items-center mx-auto bg-neutral-700/30 p-10 rounded-lg text-white border-neutral-700 border-4 shadow-neutral-700/50 shadow-lg hover:scale-105 transition-all min-w-72">
             <h1 className="font-bold text-3xl">{data[language].login.login}</h1>
             <form onSubmit={handleSubmit} className="">
               <div className="mt-10">
@@ -90,12 +90,23 @@ const Login = () => {
               </div>
               <div className=" divide-neutral-700 divide-y-2">
                 <div>
+<<<<<<< HEAD
                   <button
                     type="submit"
                     className="bg-[#469C4A] p-5 m-10 rounded-xl hover:scale-105 hover:shadow-md hover:shadow-neutral-600 transition-all "
                   >
                     {data[language].login.login}
                   </button>
+=======
+                  <Link to={"/panel"}>
+                    <button
+                      type="submit"
+                      className="bg-[#469C4A] p-5 m-10 rounded-xl hover:scale-105  hover:bg-[#378a3b] transition-all "
+                    >
+                      {data[language].login.login}
+                    </button>
+                  </Link>
+>>>>>>> origin/Gonzalo
                 </div>
                 <div>
                   <div className="flex justify-center text-black text-xl mt-2 ">

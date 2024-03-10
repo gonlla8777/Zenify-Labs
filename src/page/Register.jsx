@@ -54,7 +54,7 @@ const Register = () => {
               </span>
             </p>
           </div>
-          <div className="static    col-span-1  w-fit grid  justify-items-center mx-auto bg-neutral-700/30 p-10 rounded-lg text-white border-neutral-700 border-4 shadow-neutral-700 shadow-2xl hover:scale-105 transition-all min-w-72">
+          <div className="static    col-span-1  w-fit grid  justify-items-center mx-auto bg-neutral-700/30 p-10 rounded-lg text-white border-neutral-700 border-4 shadow-neutral-700/50 shadow-lg hover:scale-105 transition-all min-w-72">
             <h1 className="font-bold text-3xl">
               {data[language].register.register}
             </h1>
@@ -137,7 +137,7 @@ const Register = () => {
                 <div>
                   <button
                     type="submit"
-                    className="bg-[#469C4A] p-5 m-5 rounded-xl hover:scale-105 hover:shadow-md hover:shadow-neutral-600 transition-all "
+                    className="bg-[#469C4A] p-5 m-5 rounded-xl hover:scale-105 hover:bg-[#378a3b] transition-all "
                   >
                     {data[language].register.register}
                   </button>
