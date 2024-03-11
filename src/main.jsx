@@ -1,16 +1,16 @@
 // main.jsx
 
-import React from "react";
-import { HashRouter } from "react-router-dom";
-import { createRoot } from "react-dom/client";
-import App from "./App.jsx";
-import "./index.css";
+import React from 'react'
+import { HashRouter } from 'react-router-dom'
+import { createRoot } from 'react-dom/client'
+import App from './App.jsx'
+import './index.css'
 
-const container = document.getElementById("root");
-const root = createRoot(container);
+const container = document.getElementById('root')
+const root = createRoot(container)
 
 root.render(
   <HashRouter>
     <App />
   </HashRouter>
-);
+)

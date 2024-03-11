@@ -1,9 +1,9 @@
 export const routesName = {
-  homepanel: "/panel",
-  embudo: "/embudo",
-  datalist: "/datalist",
-  sendMails: "/sendMails",
-  automation: "/automation",
-  login: "/",
-  register: "/register",
-};
+  homepanel: '/panel',
+  embudo: '/embudo',
+  datalist: '/datalist',
+  sendMails: '/sendMails',
+  automation: '/automation',
+  login: '/',
+  register: '/register'
+}

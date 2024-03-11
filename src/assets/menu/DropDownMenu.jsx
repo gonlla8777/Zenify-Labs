@@ -1,19 +1,19 @@
-import { useState } from "react";
-import { IoSettings } from "react-icons/io5";
+import { useState } from 'react'
+import { IoSettings } from 'react-icons/io5'
 
-import { MdOutlineLogin } from "react-icons/md";
-import { useAuthentication } from "../../service/authentication"; // Cambio en la importación
-import { useLanguage } from "../../context/hooks";
+import { MdOutlineLogin } from 'react-icons/md'
+import { useAuthentication } from '../../service/authentication' // Cambio en la importación
+import { useLanguage } from '../../context/hooks'
 
 const DropdownMenu = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const { signOut } = useAuthentication(); // Usar el hook useAuthentication
+  const [isOpen, setIsOpen] = useState(false)
+  const { signOut } = useAuthentication() // Usar el hook useAuthentication
 
-  const { language, setLanguage } = useLanguage();
+  const { language, setLanguage } = useLanguage()
 
   const handleLanguageChange = (selectedLanguage) => {
-    setLanguage(selectedLanguage);
-  };
+    setLanguage(selectedLanguage)
+  }
 
   return (
     <div>
@@ -24,30 +24,30 @@ const DropdownMenu = () => {
         />
       </button>
       {isOpen && (
-        <div className="absolute top-12 mt-4 right-0 w-48 bg-neutral-600 rounded-lg text-white divide-y divide-gray-500 px-2 transition-all ease-in duration-300 ">
-          <div className="text-white  py-2  cursor-pointer hover:text-zinc-500">
-            {language === "english" && (
-              <button onClick={() => handleLanguageChange("spanish")}>
+        <div className='absolute top-12 mt-4 right-0 w-48 bg-neutral-600 rounded-lg text-white divide-y divide-gray-500 px-2 transition-all ease-in duration-300 '>
+          <div className='text-white  py-2  cursor-pointer hover:text-zinc-500'>
+            {language === 'english' && (
+              <button onClick={() => handleLanguageChange('spanish')}>
                 Español
               </button>
             )}
-            {language === "spanish" && (
-              <button onClick={() => handleLanguageChange("english")}>
+            {language === 'spanish' && (
+              <button onClick={() => handleLanguageChange('english')}>
                 English
               </button>
             )}
           </div>
           <button
-            className=" py-2  cursor-pointer hover:text-zinc-500 flex items-center"
+            className=' py-2  cursor-pointer hover:text-zinc-500 flex items-center'
             onClick={() => signOut()}
           >
             Log Out
-            <MdOutlineLogin className="ml-2 text-2xl  cursor-pointer" />
+            <MdOutlineLogin className='ml-2 text-2xl  cursor-pointer' />
           </button>
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default DropdownMenu;
+export default DropdownMenu

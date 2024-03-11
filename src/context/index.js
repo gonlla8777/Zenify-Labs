@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext } from 'react'
 
-export const languageContext = createContext();
-export const userContext = createContext();
+export const languageContext = createContext()
+export const userContext = createContext()
