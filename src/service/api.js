@@ -73,7 +73,7 @@ class ApiRoutes {
   }
 }
 
-const api = new ApiRoutes('https://zenify-apirest.onrender.com/')
+const api = new ApiRoutes('https://zenify-apirest.onrender.com/api/')
 // const api = new ApiRoutes('http://localhost:4000/')
 
 // User's endpoints
