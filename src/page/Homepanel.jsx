@@ -16,7 +16,7 @@ const Homepanel = () => {
     <>
       <div className="">
         <div className="text-slate-200 py-4 ">
-          <p className="text-4xl font-light underline underline-offset-8 decoration-0 uppercase ">
+          <p className="text-4xl underline underline-offset-8 decoration-green-600 decoration-0 uppercase font-semibold">
             {data[language].home.title}, {name}!
           </p>
           <p className="text-2xl font-light py-2">
@@ -24,39 +24,41 @@ const Homepanel = () => {
           </p>
         </div>
 
-        <div className="    grid  lg:grid-cols-3 text-center   justify-items-center mx-auto gap-8 w-fit h-fit">
+        <div className="    grid  lg:grid-cols-3 text-center   justify-items-center mx-auto gap-8 w-fit h-fit ">
           <Link to={"/embudo"}>
-            <div className="text-slate-200 text-xl w-80 h-48 bg-green-600 rounded-2xl pt-5 hover:scale-110 transition-all uppercase ">
-              <FaFilterCircleDollar className="w-9/12 h-4/6 m-auto " />
+            <div className="text-slate-200 text-xl w-80 h-48 bg-neutral-700/30 font-light rounded-2xl pt-5 hover:scale-110 transition-all uppercase  ">
+              <FaFilterCircleDollar className="w-9/12 h-4/6 m-auto p-5" />
               <h2 className="pt-3">{data[language].home.activeFunnels}</h2>
             </div>
           </Link>
           <Link to={"/datalist"}>
-            <div className="text-slate-200 text-xl w-80 h-48 bg-green-600 rounded-2xl pt-5 hover:scale-110 transition-all uppercase ">
-              <FaListUl className="w-9/12 h-4/6 m-auto " />
+            <div className="text-slate-200 text-xl w-80 h-48 bg-neutral-700/30 font-light rounded-2xl pt-5 hover:scale-110 transition-all uppercase ">
+              <FaListUl className="w-9/12 h-4/6 m-auto p-5" />
               <h2 className="pt-3">{data[language].home.dataList}</h2>
             </div>{" "}
           </Link>
           <Link to={"/sendMails"}>
-            <div className="text-slate-200 text-xl w-80 h-48 bg-green-600 rounded-2xl pt-5 hover:scale-110 transition-all uppercase ">
-              <RiMailSendLine className="w-9/12 h-4/6 m-auto " />
+            <div className="text-slate-200 text-xl w-80 h-48 bg-neutral-700/30 font-light rounded-2xl pt-5 hover:scale-110 transition-all uppercase ">
+              <RiMailSendLine className="w-9/12 h-4/6 m-auto p-5" />
               <h2 className="pt-3">{data[language].home.sendEmails}</h2>
             </div>{" "}
           </Link>
           <Link to={"/automation"}>
-            <div className="text-slate-200 text-xl w-80 h-48 bg-green-600 rounded-2xl pt-5 hover:scale-110 transition-all uppercase ">
-              <FaMagic className="w-9/12 h-4/6 m-auto " />
+            <div className="text-slate-200 text-xl w-80 h-48 bg-neutral-700/30 font-light rounded-2xl pt-5 hover:scale-110 transition-all uppercase ">
+              <FaMagic className="w-9/12 h-4/6 m-auto p-5" />
               <h2 className="pt-3">{data[language].home.automations}</h2>
             </div>{" "}
           </Link>
-          <div className="text-slate-200 text-xl w-80 h-48 bg-green-600 rounded-2xl pt-5 hover:scale-110 transition-all uppercase ">
-            <FiSend className="w-9/12 h-4/6 m-auto " />
+          <div className="text-slate-200 text-xl w-80 h-48 bg-neutral-700/30 font-light rounded-2xl pt-5 hover:scale-110 transition-all uppercase ">
+            <FiSend className="w-9/12 h-4/6 m-auto p-5" />
             <h2 className="pt-3">{data[language].home.outbox}</h2>
           </div>{" "}
-          <div className="text-slate-200 text-xl w-80 h-48 bg-green-600 rounded-2xl pt-5 hover:scale-110 transition-all uppercase ">
-            <RiMailStarLine className="w-9/12 h-4/6 m-auto " />
-            <h2 className="pt-3">{data[language].home.emailTemplates}</h2>
-          </div>
+          <Link to="/emailTemplates">
+            <div className="text-slate-200 text-xl w-80 h-48 bg-neutral-700/30 font-light rounded-2xl pt-5 hover:scale-110 transition-all uppercase ">
+              <RiMailStarLine className="w-9/12 h-4/6 m-auto p-5" />
+              <h2 className="pt-3">{data[language].home.emailTemplates}</h2>
+            </div>
+          </Link>
         </div>
       </div>
     </>

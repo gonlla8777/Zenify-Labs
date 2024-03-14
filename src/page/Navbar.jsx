@@ -25,7 +25,7 @@ const Navbar = () => {
             "https://e7.pngegg.com/pngimages/323/705/png-clipart-user-profile-get-em-cardiovascular-disease-zingah-avatar-miscellaneous-white.png"
           }
           className="absolute right-20 top-5 w-10 h-10 rounded-full border border-green-600"
-          alt={`${user.name || "Anónimo"}'s profile picture`}
+          alt={`${user.displayName || "Anónimo"}'s profile picture`}
         />
         <DropdownMenu />
       </div>
