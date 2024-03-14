@@ -1,16 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { FaFilterCircleDollar } from "react-icons/fa6";
-import { FaListUl } from "react-icons/fa";
-import { RiMailSendLine } from "react-icons/ri";
-import { FaMagic } from "react-icons/fa";
-import { FiSend } from "react-icons/fi";
-import { RiMailStarLine } from "react-icons/ri";
-import { Link } from "react-router-dom";
-import data from "../assets/data/data.json";
-import { useLanguage } from "../assets/languageService/LanguageContext";
+import React, { useEffect, useState } from 'react'
+import { FaFilterCircleDollar } from 'react-icons/fa6'
+import { FaListUl } from 'react-icons/fa'
+import { RiMailSendLine } from 'react-icons/ri'
+import { FaMagic } from 'react-icons/fa'
+import { FiSend } from 'react-icons/fi'
+import { RiMailStarLine } from 'react-icons/ri'
+import { Link } from 'react-router-dom'
+import data from '../assets/data/data.json'
+import { useLanguage } from '../context/hooks'
+
 const Homepanel = () => {
-  const name = "Juan";
-  const { language } = useLanguage();
+  const name = 'Juan'
+  const { language } = useLanguage()
 
   return (
     <>
@@ -19,7 +20,7 @@ const Homepanel = () => {
           <p className="text-4xl underline underline-offset-8 decoration-green-600 decoration-0 uppercase font-semibold">
             {data[language].home.title}, {name}!
           </p>
-          <p className="text-2xl font-light py-2">
+          <p className='text-2xl font-light py-2'>
             {data[language].home.controlPanel}
           </p>
         </div>
@@ -62,6 +63,6 @@ const Homepanel = () => {
         </div>
       </div>
     </>
-  );
-};
-export default Homepanel;
+  )
+}
+export default Homepanel
