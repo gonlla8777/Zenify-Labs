@@ -2,13 +2,15 @@ import { useState } from 'react'
 import { FaGoogle } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 
-import { useAuthentication } from '../service/authentication' // Cambio en la importación
+import { useAuth } from '../service/authentication' // Cambio en la importación
+import { useGoogleAuth } from '../service/firebase'
 import { useLanguage } from '../context/hooks'
 import data from '../assets/data/data.json'
 
 const Login = () => {
   const { language } = useLanguage()
-  const { signInWithGoogle, signIn } = useAuthentication() // Usar el hook useAuthentication
+  const { signIn } = useAuth() // Usar el hook useAuthentication
+  const { signInWithGoogle } = useGoogleAuth()
   const [credentials, setCredentials] = useState({
     nickname: '',
     password: ''
@@ -29,10 +31,6 @@ const Login = () => {
         nickname: '',
         password: ''
       })
-
-      // se debería utilizar react-router-dom para redireccionar pero por alguna razón no funciona correctamente
-
-      window.location.reload()
     })
   }
 

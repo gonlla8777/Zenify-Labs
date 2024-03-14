@@ -2,12 +2,12 @@ import { useState } from 'react'
 import { IoSettings } from 'react-icons/io5'
 
 import { MdOutlineLogin } from 'react-icons/md'
-import { useAuthentication } from '../../service/authentication' // Cambio en la importación
+import { useAuth } from '../../service/authentication' // Cambio en la importación
 import { useLanguage } from '../../context/hooks'
 
 const DropdownMenu = () => {
   const [isOpen, setIsOpen] = useState(false)
-  const { signOut } = useAuthentication() // Usar el hook useAuthentication
+  const { signOut } = useAuth()
 
   const { language, setLanguage } = useLanguage()
 
@@ -39,7 +39,7 @@ const DropdownMenu = () => {
           </div>
           <button
             className=' py-2  cursor-pointer hover:text-zinc-500 flex items-center'
-            onClick={() => signOut()}
+            onClick={() => signOut().then(() => window.location.reload())}
           >
             Log Out
             <MdOutlineLogin className='ml-2 text-2xl  cursor-pointer' />
