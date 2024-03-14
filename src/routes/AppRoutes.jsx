@@ -7,11 +7,10 @@ import SendMails from '../page/SendMails.jsx'
 import Automation from '../page/Automation.jsx'
 import Login from '../page/Login.jsx'
 import Register from '../page/Register.jsx'
-import EmailTemplates from "../page/EmailTemplates.jsx";
+import EmailTemplates from '../page/EmailTemplates.jsx'
 import NotFound from '../page/NotFound.jsx' // Importa tu componente de página de error 404
 import { routesName } from '../assets/utils/routesName/routesName.js'
 import { useUser } from '../context/hooks.js'
-
 
 const AppRouter = () => {
   const { isEmpty } = useUser()
@@ -46,7 +45,9 @@ const AppRouter = () => {
       />
       <Route
         path={routesName.emailTemplates}
-        element={user ? <EmailTemplates /> : <Navigate to={routesName.login} />}
+        element={
+          !isEmpty ? <EmailTemplates /> : <Navigate to={routesName.login} />
+        }
       />
       <Route
         path={routesName.automation}

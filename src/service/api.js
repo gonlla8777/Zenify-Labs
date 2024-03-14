@@ -78,14 +78,12 @@ const api = new ApiRoutes('http://localhost:4000/api/')
 
 // User's endpoints
 // Auth
-console.log(api._endpoints['register'])
 api.addEndpoint('register', '/user/auth/register')
 api.addEndpoint('login', '/user/auth/login')
 api.addEndpoint('logout', '/user/auth/logout')
 // Email
 api.addEndpoint('sendOneEmail', '/user/email/send')
 api.addEndpoint('sendBulkEmail', '/user/email/send/bulk')
-
-console.log(api._endpoints['register'])
+// Funnel
 
 export default api
