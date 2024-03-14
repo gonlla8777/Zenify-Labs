@@ -3,13 +3,14 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import data from '../assets/data/data.json'
 
-import { useAuthentication } from '../service/authentication' // Cambio en la importación
-
+import { useAuth } from '../service/authentication' // Cambio en la importación
+import { useGoogleAuth } from '../service/firebase'
 import { useLanguage } from '../context/hooks'
 
 const Register = () => {
   const { language } = useLanguage()
-  const { signInWithGoogle, signUp } = useAuthentication() // Usar el hook useAuthentication
+  const { signUp } = useAuth() // Usar el hook useAuthentication
+  const { signInWithGoogle } = useGoogleAuth()
 
   const [credentials, setCredentials] = useState({
     username: '',
@@ -30,7 +31,16 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    signUp(credentials)
+    signUp(credentials).then(() => {
+      setCredentials({
+        username: '',
+        first_name: '',
+        last_name: '',
+        email: '',
+        password: '',
+        confirm_password: ''
+      })
+    })
   }
 
   return (

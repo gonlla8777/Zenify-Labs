@@ -1,5 +1,4 @@
-import React from 'react'
-import CustomTable from '../assets/CustomTable '
+import CustomTable from '../assets/CustomTable'
 import data from '../assets/data/data.json'
 import { useLanguage } from '../context/hooks'
 

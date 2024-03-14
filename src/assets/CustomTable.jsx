@@ -7,7 +7,7 @@ import { CiShoppingTag } from 'react-icons/ci'
 import { LuSettings2 } from 'react-icons/lu'
 import { FaDownload } from 'react-icons/fa'
 import { RiMailSendLine } from 'react-icons/ri'
-import languages from '../assets/data/data.json'
+import languages from './data/data.json'
 import { useLanguage } from '../context/hooks'
 
 const CustomTable = ({ data }) => {

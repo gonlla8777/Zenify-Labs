@@ -14,33 +14,35 @@ import { useUser } from '../context/hooks.js'
 
 
 const AppRouter = () => {
-  const { user } = useUser()
+  const { isEmpty } = useUser()
 
   return (
     <Routes>
       <Route
         path={routesName.login}
-        element={!user ? <Login /> : <Navigate to={routesName.homepanel} />}
+        element={isEmpty ? <Login /> : <Navigate to={routesName.homepanel} />}
       />
       <Route
         path={routesName.register}
-        element={!user ? <Register /> : <Navigate to={routesName.homepanel} />}
+        element={
+          isEmpty ? <Register /> : <Navigate to={routesName.homepanel} />
+        }
       />
       <Route
         path={routesName.homepanel}
-        element={user ? <Homepanel /> : <Navigate to={routesName.login} />}
+        element={!isEmpty ? <Homepanel /> : <Navigate to={routesName.login} />}
       />
       <Route
         path={routesName.embudo}
-        element={user ? <Embudo /> : <Navigate to={routesName.login} />}
+        element={!isEmpty ? <Embudo /> : <Navigate to={routesName.login} />}
       />
       <Route
         path={routesName.datalist}
-        element={user ? <DataList /> : <Navigate to={routesName.login} />}
+        element={!isEmpty ? <DataList /> : <Navigate to={routesName.login} />}
       />
       <Route
         path={routesName.sendMails}
-        element={user ? <SendMails /> : <Navigate to={routesName.login} />}
+        element={!isEmpty ? <SendMails /> : <Navigate to={routesName.login} />}
       />
       <Route
         path={routesName.emailTemplates}
@@ -48,7 +50,7 @@ const AppRouter = () => {
       />
       <Route
         path={routesName.automation}
-        element={user ? <Automation /> : <Navigate to={routesName.login} />}
+        element={!isEmpty ? <Automation /> : <Navigate to={routesName.login} />}
       />
       {/* Route para manejar todas las demás rutas */}
       <Route
